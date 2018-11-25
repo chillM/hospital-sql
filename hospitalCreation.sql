@@ -5,6 +5,8 @@ DROP DATABASE hospital
 CREATE DATABASE hospital
 
 USE hospital
+
+--Table creation--
 CREATE TABLE PERSON
 (  Person_ID CHAR(4) NOT NULL,
    F_Name NVARCHAR(100) NOT NULL,
@@ -21,9 +23,8 @@ CREATE TABLE PERSON
    CREATE TABLE EMPLOYEE
 (  Person_ID CHAR(4) NOT NULL,
    Start_Date DATE NOT NULL,
-   Specialization VARCHAR(20),
-   /* Stores either “Trainee”, “Visiting”, or “Permanent” (max 9 characters) */
-   Doctor_Type VARCHAR(9),
+   Specialization VARCHAR(20), -- Can store "nurse" or "receptionist", as well as the doctor specialties like "cardiology".
+   Doctor_Type VARCHAR(9), -- Stores either “Trainee”, “Visiting”, or “Permanent” (max 9 characters); this will be null if the employee is not a doctor
    FOREIGN KEY (Person_ID) REFERENCES PERSON (Person_ID) );
 
 
@@ -143,5 +144,9 @@ CREATE TABLE INSURANCE
    Provider VARCHAR(100) NOT NULL,
    PRIMARY KEY (Payment_ID),
    FOREIGN KEY (Payment_ID) REFERENCES MEDICAL_BILL_PAYMENT(Payment_ID) );
+
+--Populate the tables with data--
+INSERT PERSON(Person_ID, F_Name, M_Name, L_Name, Address, Gender, Birth_Date)  
+   VALUES ('P001', 'Mungo', 'B', 'Jerry', '5454 XYZ Drive', 1, '1955-05-05') 
 
 GO
