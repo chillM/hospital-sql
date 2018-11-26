@@ -13,7 +13,7 @@ CREATE TABLE PERSON
   /* NULL is OK for middle name */
    M_Name NVARCHAR(100),
    L_Name NVARCHAR(100) NOT NULL,
-  /* Should Address be nullable?  I donít think so, but I could be wrong */
+  /* Should Address be nullable?  I don‚Äôt think so, but I could be wrong */
    Address NVARCHAR(100) NOT NULL,
   /* Binary/fixed number or free entry?  If binary/fixed number, INT; if not, VARCHAR */
    Gender INT,
@@ -24,7 +24,7 @@ CREATE TABLE PERSON
 (  Person_ID CHAR(4) NOT NULL,
    Start_Date DATE NOT NULL,
    Specialization VARCHAR(20), -- Can store "nurse" or "receptionist", as well as the doctor specialties like "cardiology".
-   Doctor_Type VARCHAR(9), -- Stores either ìTraineeî, ìVisitingî, or ìPermanentî (max 9 characters); this will be null if the employee is not a doctor
+   Doctor_Type VARCHAR(9), -- Stores either ‚ÄúTrainee‚Äù, ‚ÄúVisiting‚Äù, or ‚ÄúPermanent‚Äù (max 9 characters); this will be null if the employee is not a doctor
    FOREIGN KEY (Person_ID) REFERENCES PERSON (Person_ID) );
 
 
@@ -149,7 +149,7 @@ CREATE TABLE INSURANCE
    Amount MONEY NOT NULL,
    Coverage MONEY NOT NULL,
    PRIMARY KEY (Payment_ID),
-   FOREIGN KEY (Payment_ID) REFERENCES MEDICAL_BILL_PAYMENT(Payment_ID)
+   FOREIGN KEY (Payment_ID) REFERENCES MEDICAL_BILL_PAYMENT(Payment_ID),
    FOREIGN KEY (Insurance_ID) REFERENCES INSURANCE_PROVIDER(Insurance_ID) );
 
 --Populate the tables with data--
