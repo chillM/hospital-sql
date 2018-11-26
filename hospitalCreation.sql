@@ -153,7 +153,11 @@ CREATE TABLE INSURANCE
    FOREIGN KEY (Insurance_ID) REFERENCES INSURANCE_PROVIDER(Insurance_ID) );
 
 --Populate the tables with data--
-INSERT PERSON(Person_ID, F_Name, M_Name, L_Name, Address, Gender, Birth_Date)  
+INSERT INTO PERSON(Person_ID, F_Name, M_Name, L_Name, Address, Gender, Birth_Date)  
    VALUES ('P001', 'Mungo', 'B', 'Jerry', '5454 XYZ Drive', 1, '1955-05-05') 
+
+
+   
+ 
 
 GO
