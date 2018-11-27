@@ -44,7 +44,14 @@ SELECT Provider, COUNT(*) FROM INSURANCE, INSURANCE_PROVIDER WHERE Amount=Covera
 
 
 --7
-SELECT Room_ID, DATEDIFF(day, Admission_Date, Discharge_Date) FROM CLASS2_Patient WHERE DATEDIFF(day, Admission_Date, Discharge_Date)=MAX(DATEDIFF(day, Admission_Date, Discharge_Date));
+SELECT Duration
+FROM (
+	SELECT TOP(1) Room_ID, DATEDIFF(day, Admission_Date, Discharge_Date) as Duration
+	FROM CLASS2_Patient
+	GROUP BY Room_ID, Admission_Date, Discharge_Date
+	HAVING DATEDIFF(day, Admission_Date, Discharge_Date)=MAX(DATEDIFF(day, Admission_Date, Discharge_Date))
+	ORDER BY Duration DESC
+) as Temp
 
 
 --8
