@@ -85,7 +85,7 @@ CREATE TABLE MEDICINE
 CREATE TABLE TREATMENT
 ( Treatment_ID UNIQUEIDENTIFIER NOT NULL,
    Name VARCHAR(100) NOT NULL,
-   Duration DATETIMEOFFSET NOT NULL,
+   Duration INT NOT NULL,
    PRIMARY KEY (Treatment_ID) );
 
 CREATE TABLE ASSIGNED
@@ -154,39 +154,68 @@ CREATE TABLE INSURANCE
 
 --Populate the tables with data--
 INSERT INTO PERSON(Person_ID, F_Name, M_Name, L_Name, Address, Gender, Birth_Date)  
-   VALUES ('P001', 'Mungo', 'B', 'Jerry', '5454 XYZ Drive', 1, '1955-05-05');
-   
-   INSERT INTO PERSON(Person_ID, F_Name, M_Name, L_Name, Address, Gender, Birth_Date)
-   VALUES('P002', 'Bobby', 'B', 'Smith', '123 Rocky Road', 1, '1978-02-16');
-   
-INSERT INTO PERSON(Person_ID, F_Name, M_Name, L_Name, Address, Gender, Birth_Date)
-   VALUES('P003', 'Julie', 'R', 'Johnson', '808 Lorrie Ave', 2, '1986-10-07');
-   
-INSERT INTO PERSON(Person_ID, F_Name, M_Name, L_Name, Address, Gender, Birth_Date)
-   VALUES('P004', 'Rick', 'E', 'Sanchez', '908 Milky Way', 1, '1943-04-20');
+   VALUES
+   ('P001', 'Mungo', 'B', 'Jerry', '5454 XYZ Drive', 1, '1955-05-05'),
+   ('P002', 'Bobby', 'B', 'Smith', '123 Rocky Road', 1, '1978-02-16'),
+   ('P003', 'Julie', 'R', 'Johnson', '808 Lorrie Ave', 2, '1986-10-07'),
+   ('P004', 'Rick', 'E', 'Sanchez', '908 Milky Way', 1, '1943-04-20'),
+   ('P005', 'Nancy', 'M', 'Carney', '234 Viking Drive', 2, '1963-03-30'),
+   ('P006', 'Victoria', 'L', 'Rush', '221B Baker Street', 2, '1981-09-03');
 
-INSERT INTO PERSON(Person_ID, F_Name, M_Name, L_Name, Address, Gender, Birth_Date)
-   VALUES('P005', 'Nancy', 'M', 'Carney', '234 Viking Drive', 2, '1963-03-30');
-
-INSERT INTO PERSON(Person_ID, F_Name, M_Name, L_Name, Address, Gender, Birth_Date)
-   VALUES('P006', 'Victoria', 'L', 'Rush', '221B Baker Street', 2, '1981-09-03');
    
 INSERT INTO EMPLOYEE(Person_ID, Start_Date, Specialization, Doctor_Type)
-   VALUES('P001', '1998-08-12', 'Cardiology', 'Permanent');
-
-INSERT INTO EMPLOYEE(Person_ID, Start_Date, Specialization, Doctor_Type)
-   VALUES('P004', '2015-06-01', 'Orthopedic', 'Visiting');
-
-INSERT INTO EMPLOYEE(Person_ID, Start_Date, Specialization, Doctor_Type)
-	VALUES('P003', '1987-01-31', 'Nurse', NULL);
- 
-INSERT INTO EMPLOYEE(Person_ID, Start_Date, Specialization, Doctor_Type)
-	VALUES('P005', '2007-10-31', 'Receptionist', NULL);
+   VALUES
+   ('P001', '1998-08-12', 'Cardiology', 'Permanent'),
+   ('P004', '2015-06-01', 'Orthopedic', 'Visiting'),
+   ('P003', '1987-01-31', 'Nurse', NULL),
+   ('P005', '2007-10-31', 'Receptionist', NULL);
 
 INSERT INTO CLASS1_PATIENT(Person_ID, Doctor_ID)
-	VALUES('P002', 'P004');
+	VALUES
+	('P002', 'P004'),
+	('P001', 'P004'),
+	('P006', 'P001');
 
 INSERT INTO ROOM(Room_ID, Room_Type, Nurse_ID)
-	VALUES(NEWID(), 'Single', 'P003');
+	VALUES
+	('e10d5923-ebbb-47a9-8fde-f9ba4ac229db', 'Single', 'P003'),
+	('9044ad76-bd87-4bed-9605-d984cadf4658', 'Double', 'P003'),
+	('979fb8b8-232d-49ed-84cd-e4b247ff09a6', 'Quadruple', 'P003');
+
+INSERT INTO CLASS2_PATIENT(Person_ID, Admission_Date, Discharge_Date, Room_ID)
+	VALUES
+	('P002', '20181101', NULL, 'e10d5923-ebbb-47a9-8fde-f9ba4ac229db'),
+	('P003', '20180708', '20180714', '9044ad76-bd87-4bed-9605-d984cadf4658');
    
+INSERT INTO ATTENDS(Doctor_ID, Class2_Patient_ID)
+	VALUES
+	('P004', 'P002'),
+	('P001', 'P002'),
+	('P004', 'P003');
+
+INSERT INTO VISITOR(Visitor_ID, Person_ID, Name, Address, Contact_Information, Room_ID)
+	VALUES
+	('949ddb6d-7f41-4acb-a2a9-2f747ebe2ff6', 'P002', 'Hammond Johnson', '25 Fish Blvd.', '(273) 555-1234', 'e10d5923-ebbb-47a9-8fde-f9ba4ac229db'),
+	('d9abd5af-ae30-4386-ab4d-0a6920ecfb3a', 'P002', 'Susie Johnson', '25 Fish Blvd.', '(273) 555-4321', 'e10d5923-ebbb-47a9-8fde-f9ba4ac229db'),
+	('a584f717-1942-49b0-8c6e-05b7834d1068', 'P003', 'Fracis McGee', '613 Salmon Ln.', '(990) 555-2413', '9044ad76-bd87-4bed-9605-d984cadf4658');
+
+INSERT INTO MEDICINE(Medicine_Code, Name, Price, Date_Of_Expiration, Quantity, Pharmacy_ID)
+	VALUES
+	('c1e37f61-455f-4b51-a43a-ea1d20619a1f', 'Amoxicillin', '$4.00', '20200927', 50, 'd4178aa7-c5ab-44d8-8770-ffdc3b3baa5e'),
+	('f703936a-f725-4ba8-a031-8af9a6b30e05', 'Acetaminophen', '$0.90', '20250713', 1000, '3565cc04-0d42-46d8-b7ec-1fb1ca20703a'),
+	('e97749f2-ceb2-4cd7-82c3-2fac36379d0b', 'Daklinza', '$49400.00', '20220404', 10, '68ead9e2-4a70-4202-903c-43104e2a2e65');
+
+INSERT INTO TREATMENT(Treatment_ID, Name, Duration)
+	VALUES
+	('09610573-ec8b-40a6-8698-f40479b040dc', 'Painkillers', 72),
+	('86f9d393-ae87-4247-9cd3-40d1197b2f51', 'Antibiotics', 168);
+
+INSERT INTO ASSIGNED(Class2_Patient_ID, Medicine_Code, Treatment_ID)
+	VALUES
+	('P002', 'c1e37f61-455f-4b51-a43a-ea1d20619a1f', '86f9d393-ae87-4247-9cd3-40d1197b2f51'),
+	('P003', 'c1e37f61-455f-4b51-a43a-ea1d20619a1f', '86f9d393-ae87-4247-9cd3-40d1197b2f51'),
+	('P003', 'f703936a-f725-4ba8-a031-8af9a6b30e05', '09610573-ec8b-40a6-8698-f40479b040dc');
+
+
 GO
+
