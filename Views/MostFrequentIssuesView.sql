@@ -1,4 +1,5 @@
-USE hospital
+USE hospital ;
+GO
 
 CREATE VIEW MostFrequentIssues
 AS  SELECT Treatment_ID, Name, COUNT(Treatment_ID) AS Frequency

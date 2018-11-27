@@ -1,4 +1,5 @@
-USE hospital
+USE hospital ;
+GO
 
 CREATE VIEW PotentialPatient
 AS  SELECT F_Name, M_Name, L_Name, Phone_Number, 

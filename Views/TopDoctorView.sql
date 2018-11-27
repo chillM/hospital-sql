@@ -1,4 +1,5 @@
-USE hospital
+USE hospital ;
+GO
 
 CREATE VIEW TopDoctor
 AS  SELECT F_Name, L_Name, Start_Date
