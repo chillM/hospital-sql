@@ -2,7 +2,7 @@ USE hospital ;
 GO
 
 CREATE VIEW ReorderMeds
-AS  (SELECT *
+AS  SELECT *
 	FROM MEDICINE
 	WHERE Quantity < 1000 AND 
-	DATE_ADD(CURDATE(), INTERVAL 31 DAY)<Date_Of_Expiration);
+	DATEADD(month, 1, GETDATE())<Date_Of_Expiration;

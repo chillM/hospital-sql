@@ -2,8 +2,8 @@ USE hospital ;
 GO
 
 CREATE VIEW MostFrequentIssues
-AS  SELECT Treatment_ID, Name, COUNT(Treatment_ID) AS Frequency
+AS  SELECT TOP 1 TREATMENT.Treatment_ID, Name, COUNT(TREATMENT.Treatment_ID) AS Frequency
 	FROM ASSIGNED, TREATMENT
 	WHERE TREATMENT.Treatment_ID=ASSIGNED.Treatment_ID
-	GROUP BY Treatment_ID
-	ORDER BY COUNT(Treatment_ID) DESC;
+	GROUP BY TREATMENT.Treatment_ID, Name
+	ORDER BY COUNT(TREATMENT.Treatment_ID) DESC;

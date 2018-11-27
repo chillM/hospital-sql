@@ -1,8 +1,10 @@
 --1
 SELECT Start_Date, Specialization FROM EMPLOYEE WHERE Doctor_Type IS NOT NULL;  *
+--WORKS
 
 --2
 SELECT F_Name, M_Name, L_Name FROM PERSON, EMPLOYEE, CLASS2_PATIENT WHERE PERSON.Person_ID=EMPLOYEE.Person_ID AND PERSON.Person_ID=CLASS2_PATIENT.Person_ID AND Admission_Date BETWEEN Start_Date AND (SELECT DATEADD(month, 3, Start_Date));
+--WORKS
 
 
 --3
