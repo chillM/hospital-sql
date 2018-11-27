@@ -177,6 +177,15 @@ INSERT INTO PERSON(Person_ID, F_Name, M_Name, L_Name, Address, Gender, Birth_Dat
 
 INSERT INTO PERSON(Person_ID, F_Name, M_Name, L_Name, Address, Gender, Birth_Date)
    VALUES('P008', 'Phil', NULL, 'Lays', '9200 Windy Lane', 2, '1996-04-24');
+
+INSERT INTO PERSON(Person_ID, F_Name, M_Name, L_Name, Address, Gender, Birth_Date)
+   VALUES('P009', 'Charles', NULL, 'Ronson', '6200 Worthington Drive', 2, '2001-02-14');
+
+INSERT INTO PERSON(Person_ID, F_Name, M_Name, L_Name, Address, Gender, Birth_Date)
+   VALUES('P010', 'Diana', NULL, 'Ross', '249 Syracuse Drive', 2, '1950-05-22');
+
+INSERT INTO PERSON(Person_ID, F_Name, M_Name, L_Name, Address, Gender, Birth_Date)
+   VALUES('P011', 'Colonal', NULL, 'Mustard', '6226 Clue Lane', 2, '1937-12-23');
    
 --Employee
 INSERT INTO EMPLOYEE(Person_ID, Start_Date, Specialization, Doctor_Type)
@@ -200,11 +209,23 @@ INSERT INTO CLASS1_PATIENT(Person_ID, Doctor_ID)
 
 --Room
 INSERT INTO ROOM(Room_ID, Room_Type, Nurse_ID)
-	VALUES(NEWID(), 'Single', 'P003');
+	VALUES('8bd0e86f-bf4a-4cda-b49d-114ad17e00e5', 'Single', 'P003');
+
+INSERT INTO ROOM(Room_ID, Room_Type, Nurse_ID)
+	VALUES('011a63ce-4d66-495e-b8b9-f33c854822b0', 'Multiple', 'P003');
 
 --Class  2 Patient
 INSERT INTO CLASS2_PATIENT(Person_ID, Admission_Date, Discharge_Date, Room_ID)
-	VALUES('P007', '2018-09-16', NULL, )
+	VALUES('P007', '2018-09-16', NULL, '8bd0e86f-bf4a-4cda-b49d-114ad17e00e5')
+
+INSERT INTO CLASS2_PATIENT(Person_ID, Admission_Date, Discharge_Date, Room_ID)
+	VALUES('P009', '2018-11-10', NULL, '011a63ce-4d66-495e-b8b9-f33c854822b0')
+
+INSERT INTO CLASS2_PATIENT(Person_ID, Admission_Date, Discharge_Date, Room_ID)
+	VALUES('P010', '2018-11-06', '2018-11-29', '011a63ce-4d66-495e-b8b9-f33c854822b0')
+
+INSERT INTO CLASS2_PATIENT(Person_ID, Admission_Date, Discharge_Date, Room_ID)
+	VALUES('P011', '2018-11-10', NULL, '011a63ce-4d66-495e-b8b9-f33c854822b0')
 
 --Attends
 
@@ -225,26 +246,26 @@ INSERT INTO PHONE_NUMBER(Person_ID, Number)
 
 --Record
 INSERT INTO RECORD(Record_ID, Patient_ID, Date_Of_Visit, Description, Appointment, Receptionist_ID)
-	VALUES('80fb52bb-6999-44cc-9489-dd13782a69a9', '2018-06-10', 'Long description here', 'd46ad8e7-9895-4cde-a9f5-606fab789e83', 'P008')
+	VALUES('80fb52bb-6999-44cc-9489-dd13782a69a9', 'P007', '2018-06-10', 'Long description here', 'd46ad8e7-9895-4cde-a9f5-606fab789e83', 'P008')
 
 INSERT INTO RECORD(Record_ID, Patient_ID, Date_Of_Visit, Description, Appointment, Receptionist_ID)
-	VALUES('223442a3-9fb2-49e0-9d7c-1e7a26144b54', '2016-03-18', 'Long description here', '368b8003-ef87-4285-9b5f-b7555d5d8785', 'P008')
+	VALUES('223442a3-9fb2-49e0-9d7c-1e7a26144b54', 'P009', '2016-03-18', 'Long description here', '368b8003-ef87-4285-9b5f-b7555d5d8785', 'P008')
 
 INSERT INTO RECORD(Record_ID, Patient_ID, Date_Of_Visit, Description, Appointment, Receptionist_ID)
-	VALUES('9e7b9b93-ce2f-488b-bf5d-03cb410003ae', '2016-08-25', 'Professional description here', '20ee8a07-94b4-47d9-8420-5333c98fd361', 'P008')
+	VALUES('9e7b9b93-ce2f-488b-bf5d-03cb410003ae', 'P010', '2016-08-25', 'Professional description here', '20ee8a07-94b4-47d9-8420-5333c98fd361', 'P008')
 
 INSERT INTO RECORD(Record_ID, Patient_ID, Date_Of_Visit, Description, Appointment, Receptionist_ID)
-	VALUES('5434c983-90b0-4d88-93ae-f4f648fb9a86', '2016-08-25', 'Professional description here', 'f5cc3240-f034-487f-8420-eb91533565ab', 'P005')
+	VALUES('5434c983-90b0-4d88-93ae-f4f648fb9a86', 'P011', '2016-08-25', 'Professional description here', 'f5cc3240-f034-487f-8420-eb91533565ab', 'P005')
 
 --Medical Bill Payment
 INSERT INTO MEDICAL_BILL_PAYMENT(Payment_ID, Patient_ID, Receptionist_ID)
-	VALUES('b9f17e90-c7e1-4eec-a3d0-d2c8f62d2b31', '<Insert C2 Patient ID>', 'P008')
+	VALUES('b9f17e90-c7e1-4eec-a3d0-d2c8f62d2b31', 'P010', 'P008')
 
 INSERT INTO MEDICAL_BILL_PAYMENT(Payment_ID, Patient_ID, Receptionist_ID)
-	VALUES('f69489f8-dfbe-4ff4-b63d-b446198066d6', '<Insert C2 Patient ID>', 'P005')
+	VALUES('f69489f8-dfbe-4ff4-b63d-b446198066d6', 'P011', 'P005')
 
 INSERT INTO MEDICAL_BILL_PAYMENT(Payment_ID, Patient_ID, Receptionist_ID)
-	VALUES('4499f15f-ffb4-4aa3-a603-50ed5dbfa17d', '<Insert C2 Patient ID>', 'P008')
+	VALUES('4499f15f-ffb4-4aa3-a603-50ed5dbfa17d', 'P009', 'P008')
 
 --Cash
 INSERT INTO CASH(Payment_ID, Amount)
