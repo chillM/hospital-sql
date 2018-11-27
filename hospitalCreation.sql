@@ -68,7 +68,7 @@ CREATE TABLE VISITOR
    Address NVARCHAR(100),
    Contact_Information NVARCHAR(100),
    Room_ID UNIQUEIDENTIFIER NOT NULL,
-   PRIMARY KEY (Visitor_ID),
+   PRIMARY KEY (Visitor_ID, Person_ID),
    FOREIGN KEY (Person_ID) REFERENCES CLASS2_PATIENT(Person_ID),
    FOREIGN KEY (Room_ID) REFERENCES ROOM(Room_ID) );
 
@@ -153,6 +153,7 @@ CREATE TABLE INSURANCE
    FOREIGN KEY (Insurance_ID) REFERENCES INSURANCE_PROVIDER(Insurance_ID) );
 
 --Populate the tables with data--
+--Person
 INSERT INTO PERSON(Person_ID, F_Name, M_Name, L_Name, Address, Gender, Birth_Date)  
    VALUES ('P001', 'Mungo', 'B', 'Jerry', '5454 XYZ Drive', 1, '1955-05-05');
    
@@ -170,7 +171,14 @@ INSERT INTO PERSON(Person_ID, F_Name, M_Name, L_Name, Address, Gender, Birth_Dat
 
 INSERT INTO PERSON(Person_ID, F_Name, M_Name, L_Name, Address, Gender, Birth_Date)
    VALUES('P006', 'Victoria', 'L', 'Rush', '221B Baker Street', 2, '1981-09-03');
+
+INSERT INTO PERSON(Person_ID, F_Name, M_Name, L_Name, Address, Gender, Birth_Date)
+   VALUES('P007', 'George', NULL, 'James', '221B Penny Lane', 2, '1971-02-03');
+
+INSERT INTO PERSON(Person_ID, F_Name, M_Name, L_Name, Address, Gender, Birth_Date)
+   VALUES('P008', 'Phil', NULL, 'Lays', '9200 Windy Lane', 2, '1996-04-24');
    
+--Employee
 INSERT INTO EMPLOYEE(Person_ID, Start_Date, Specialization, Doctor_Type)
    VALUES('P001', '1998-08-12', 'Cardiology', 'Permanent');
 
@@ -183,10 +191,80 @@ INSERT INTO EMPLOYEE(Person_ID, Start_Date, Specialization, Doctor_Type)
 INSERT INTO EMPLOYEE(Person_ID, Start_Date, Specialization, Doctor_Type)
 	VALUES('P005', '2007-10-31', 'Receptionist', NULL);
 
+INSERT INTO EMPLOYEE(Person_ID, Start_Date, Specialization, Doctor_Type)
+	VALUES('P008', '2014-11-21', 'Receptionist', NULL);
+
+--Class 1 Patient
 INSERT INTO CLASS1_PATIENT(Person_ID, Doctor_ID)
 	VALUES('P002', 'P004');
 
+--Room
 INSERT INTO ROOM(Room_ID, Room_Type, Nurse_ID)
 	VALUES(NEWID(), 'Single', 'P003');
+
+--Class  2 Patient
+INSERT INTO CLASS2_PATIENT(Person_ID, Admission_Date, Discharge_Date, Room_ID)
+	VALUES('P007', '2018-09-16', NULL, )
+
+--Attends
+
+--Visitor
+
+--Medicine
+
+--Treatment
+
+--Assigned
+
+--Phone Number
+INSERT INTO PHONE_NUMBER(Person_ID, Number)
+	VALUES('P001', '972-867-5309')
+
+INSERT INTO PHONE_NUMBER(Person_ID, Number)
+	VALUES('P002', '555-555-5555')
+
+--Record
+INSERT INTO RECORD(Record_ID, Patient_ID, Date_Of_Visit, Description, Appointment, Receptionist_ID)
+	VALUES('80fb52bb-6999-44cc-9489-dd13782a69a9', '2018-06-10', 'Long description here', 'd46ad8e7-9895-4cde-a9f5-606fab789e83', 'P008')
+
+INSERT INTO RECORD(Record_ID, Patient_ID, Date_Of_Visit, Description, Appointment, Receptionist_ID)
+	VALUES('223442a3-9fb2-49e0-9d7c-1e7a26144b54', '2016-03-18', 'Long description here', '368b8003-ef87-4285-9b5f-b7555d5d8785', 'P008')
+
+INSERT INTO RECORD(Record_ID, Patient_ID, Date_Of_Visit, Description, Appointment, Receptionist_ID)
+	VALUES('9e7b9b93-ce2f-488b-bf5d-03cb410003ae', '2016-08-25', 'Professional description here', '20ee8a07-94b4-47d9-8420-5333c98fd361', 'P008')
+
+INSERT INTO RECORD(Record_ID, Patient_ID, Date_Of_Visit, Description, Appointment, Receptionist_ID)
+	VALUES('5434c983-90b0-4d88-93ae-f4f648fb9a86', '2016-08-25', 'Professional description here', 'f5cc3240-f034-487f-8420-eb91533565ab', 'P005')
+
+--Medical Bill Payment
+INSERT INTO MEDICAL_BILL_PAYMENT(Payment_ID, Patient_ID, Receptionist_ID)
+	VALUES('b9f17e90-c7e1-4eec-a3d0-d2c8f62d2b31', '<Insert C2 Patient ID>', 'P008')
+
+INSERT INTO MEDICAL_BILL_PAYMENT(Payment_ID, Patient_ID, Receptionist_ID)
+	VALUES('f69489f8-dfbe-4ff4-b63d-b446198066d6', '<Insert C2 Patient ID>', 'P005')
+
+INSERT INTO MEDICAL_BILL_PAYMENT(Payment_ID, Patient_ID, Receptionist_ID)
+	VALUES('4499f15f-ffb4-4aa3-a603-50ed5dbfa17d', '<Insert C2 Patient ID>', 'P008')
+
+--Cash
+INSERT INTO CASH(Payment_ID, Amount)
+	VALUES('b9f17e90-c7e1-4eec-a3d0-d2c8f62d2b31', 2000)
+
+INSERT INTO CASH(Payment_ID, Amount)
+	VALUES('f69489f8-dfbe-4ff4-b63d-b446198066d6', 1200)
+
+--Insurance Provider
+INSERT INTO INSURANCE_PROVIDER(Insurance_ID, Provider)
+	VALUES('acb32635-a23d-48e5-aae7-7d6dd77589da', 'Mercy')
+
+INSERT INTO INSURANCE_PROVIDER(Insurance_ID, Provider)
+	VALUES('2bfa19a9-c5ce-4815-865e-d4ee7e8ea63c', 'Schadenfreude')
+
+--Insurance
+INSERT INTO INSURANCE(Payment_ID, Insurance_ID, Amount, Coverage)
+	VALUES('b9f17e90-c7e1-4eec-a3d0-d2c8f62d2b31', 'acb32635-a23d-48e5-aae7-7d6dd77589da', 5000, 3000)
+
+INSERT INTO INSURANCE(Payment_ID, Insurance_ID, Amount, Coverage)
+	VALUES('4499f15f-ffb4-4aa3-a603-50ed5dbfa17d', '2bfa19a9-c5ce-4815-865e-d4ee7e8ea63c', 1400, 6000)
    
 GO
