@@ -163,7 +163,10 @@ INSERT INTO PERSON(Person_ID, F_Name, M_Name, L_Name, Address, Gender, Birth_Dat
    ('P005', 'Nancy', 'M', 'Carney', '234 Viking Drive', 2, '1963-03-30'),
    ('P006', 'Victoria', 'L', 'Rush', '221B Baker Street', 2, '1981-09-03'),
    ('P007', 'George', NULL, 'James', '221B Penny Lane', 2, '1971-02-03'),
-   ('P008', 'Phil', NULL, 'Lays', '9200 Windy Lane', 2, '1996-04-24');
+   ('P008', 'Phil', NULL, 'Lays', '9200 Windy Lane', 2, '1996-04-24'),
+   ('P009', 'Charles', NULL, 'Ronson', '6200 Worthington Drive', 2, '2001-02-14'),
+   ('P010', 'Diana', NULL, 'Ross', '249 Syracuse Drive', 2, '1950-05-22'),
+   ('P011', 'Colonal', NULL, 'Mustard', '6226 Clue Lane', 2, '1937-12-23');
 
 --Employee
 INSERT INTO EMPLOYEE(Person_ID, Start_Date, Specialization, Doctor_Type)
@@ -188,13 +191,18 @@ INSERT INTO ROOM(Room_ID, Room_Type, Nurse_ID)
 	VALUES
 	('e10d5923-ebbb-47a9-8fde-f9ba4ac229db', 'Single', 'P003'),
 	('9044ad76-bd87-4bed-9605-d984cadf4658', 'Double', 'P003'),
-	('979fb8b8-232d-49ed-84cd-e4b247ff09a6', 'Quadruple', 'P003');
+	('979fb8b8-232d-49ed-84cd-e4b247ff09a6', 'Quadruple', 'P003'),
+	('011a63ce-4d66-495e-b8b9-f33c854822b0', 'Multiple', 'P003');
 
+--Class 2 Patient
 INSERT INTO CLASS2_PATIENT(Person_ID, Admission_Date, Discharge_Date, Room_ID)
 	VALUES
 	('P002', '20181101', NULL, 'e10d5923-ebbb-47a9-8fde-f9ba4ac229db'),
 	('P003', '20180708', '20180714', '9044ad76-bd87-4bed-9605-d984cadf4658'),
-	('P007', '2018-09-16', NULL, '9044ad76-bd87-4bed-9605-d984cadf4658');
+	('P007', '2018-09-16', NULL, '979fb8b8-232d-49ed-84cd-e4b247ff09a6'),
+	('P009', '2018-11-10', NULL, '011a63ce-4d66-495e-b8b9-f33c854822b0'),
+	('P010', '2018-11-06', '2018-11-29', '011a63ce-4d66-495e-b8b9-f33c854822b0'),
+	('P011', '2018-11-10', NULL, '011a63ce-4d66-495e-b8b9-f33c854822b0');
 
 --Attends
 INSERT INTO ATTENDS(Doctor_ID, Class2_Patient_ID)
@@ -240,17 +248,17 @@ INSERT INTO PHONE_NUMBER(Person_ID, Number)
 --Record
 INSERT INTO RECORD(Record_ID, Patient_ID, Date_Of_Visit, Description, Appointment, Receptionist_ID)
 	VALUES
-    ('80fb52bb-6999-44cc-9489-dd13782a69a9', 'P001', '2018-06-10', 'Long description here', 'd46ad8e7-9895-4cde-a9f5-606fab789e83', 'P008'),
-	('223442a3-9fb2-49e0-9d7c-1e7a26144b54', 'P002', '2016-03-18', 'Long description here', '368b8003-ef87-4285-9b5f-b7555d5d8785', 'P008'),
-	('9e7b9b93-ce2f-488b-bf5d-03cb410003ae', 'P004', '2016-08-25', 'Professional description here', '20ee8a07-94b4-47d9-8420-5333c98fd361', 'P008'),
-	('5434c983-90b0-4d88-93ae-f4f648fb9a86', 'P007', '2016-08-25', 'Professional description here', 'f5cc3240-f034-487f-8420-eb91533565ab', 'P005');
+	('80fb52bb-6999-44cc-9489-dd13782a69a9', 'P007', '2018-06-10', 'Long description here', 'd46ad8e7-9895-4cde-a9f5-606fab789e83', 'P008'),
+	('223442a3-9fb2-49e0-9d7c-1e7a26144b54', 'P009', '2016-03-18', 'Long description here', '368b8003-ef87-4285-9b5f-b7555d5d8785', 'P008'),
+	('9e7b9b93-ce2f-488b-bf5d-03cb410003ae', 'P010', '2016-08-25', 'Professional description here', '20ee8a07-94b4-47d9-8420-5333c98fd361', 'P008'),
+	('5434c983-90b0-4d88-93ae-f4f648fb9a86', 'P011', '2016-08-25', 'Professional description here', 'f5cc3240-f034-487f-8420-eb91533565ab', 'P005');
 
 --Medical Bill Payment
 INSERT INTO MEDICAL_BILL_PAYMENT(Payment_ID, Patient_ID, Receptionist_ID)
 	VALUES
-    ('b9f17e90-c7e1-4eec-a3d0-d2c8f62d2b31', 'P002', 'P008'),
-	('f69489f8-dfbe-4ff4-b63d-b446198066d6', 'P002', 'P005'),
-	('4499f15f-ffb4-4aa3-a603-50ed5dbfa17d', 'P003', 'P008');
+	('b9f17e90-c7e1-4eec-a3d0-d2c8f62d2b31', 'P010', 'P008'),
+	('f69489f8-dfbe-4ff4-b63d-b446198066d6', 'P011', 'P005'),
+	('4499f15f-ffb4-4aa3-a603-50ed5dbfa17d', 'P009', 'P008');
 
 --Cash
 INSERT INTO CASH(Payment_ID, Amount)
