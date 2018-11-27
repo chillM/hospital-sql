@@ -32,8 +32,8 @@ GROUP BY Doctor_Type HAVING COUNT(*)=MAX(COUNT(*) ) );
 
 
 --4
-SELECT M_Name FROM TopTreatment, TREATMENT, MEDICINE AS M(Medicine_Code, M_Name, Price, Date_Of_Expiration, Quantity, Pharmacy_ID), ASSIGNED WHERE TopTreatment.Name=Treatment.Name AND ASSIGNED.Medicine_Code=M.Medicine_Code AND ASSIGNED.Treatment_ID=TREATMENT.Treatment_ID;
-
+SELECT M.Name FROM TopTreatment, TREATMENT, MEDICINE AS M, ASSIGNED WHERE TopTreatment.Name=Treatment.Name AND ASSIGNED.Medicine_Code=M.Medicine_Code AND ASSIGNED.Treatment_ID=TREATMENT.Treatment_ID;
+--WORKS
 
 --5
 SELECT F_Name, M_Name, L_Name FROM EMPLOYEE WHERE Doctor_Type IS NOT NULL AND Person_ID NOT IN (SELECT Doctor_ID FROM CLASS1_PATIENT, ATTENDS, RECORD WHERE Date_Of_Visit > (SELECT DATEADD(month, -5, (SELECT GETDATE() ) ) ) );
