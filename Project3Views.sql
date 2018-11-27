@@ -7,9 +7,10 @@ AS  SELECT F_Name, L_Name, Start_Date
 
 
 CREATE VIEW TopTreatment
-AS  SELECT Name /*add billing*/
-	FROM ASSIGNED, TREATMENT
-	WHERE TREATMENT.Treatment_ID=ASSIGNED.Treatment_ID
+AS  SELECT Name, Price
+	FROM ASSIGNED, TREATMENT, MEDICINE
+	WHERE TREATMENT.Treatment_ID=ASSIGNED.Treatment_ID AND
+		  ASSIGNED.Medicine_Code=MEDICINE.Medicine_Code
 	GROUP BY Treatment_ID
 	ORDER BY COUNT(Treatment_ID) DESC
 	LIMIT 1;
@@ -19,7 +20,7 @@ CREATE VIEW ReorderMeds
 AS  SELECT *
 	FROM MEDICINE
 	WHERE Quantity < 1000 AND 
-	DATE_ADD(CURDATE(), INTERVAL 31 DAY)<Date_Of_Expiration
+	DATE_ADD(CURDATE(), INTERVAL 31 DAY)<Date_Of_Expiration;
 
 
 CREATE VIEW PotentialPatient
