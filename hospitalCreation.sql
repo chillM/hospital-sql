@@ -154,10 +154,39 @@ CREATE TABLE INSURANCE
 
 --Populate the tables with data--
 INSERT INTO PERSON(Person_ID, F_Name, M_Name, L_Name, Address, Gender, Birth_Date)  
-   VALUES ('P001', 'Mungo', 'B', 'Jerry', '5454 XYZ Drive', 1, '1955-05-05') 
-
-
+   VALUES ('P001', 'Mungo', 'B', 'Jerry', '5454 XYZ Drive', 1, '1955-05-05');
    
- 
+   INSERT INTO PERSON(Person_ID, F_Name, M_Name, L_Name, Address, Gender, Birth_Date)
+   VALUES('P002', 'Bobby', 'B', 'Smith', '123 Rocky Road', 1, '1978-02-16');
+   
+INSERT INTO PERSON(Person_ID, F_Name, M_Name, L_Name, Address, Gender, Birth_Date)
+   VALUES('P003', 'Julie', 'R', 'Johnson', '808 Lorrie Ave', 2, '1986-10-07');
+   
+INSERT INTO PERSON(Person_ID, F_Name, M_Name, L_Name, Address, Gender, Birth_Date)
+   VALUES('P004', 'Rick', 'E', 'Sanchez', '908 Milky Way', 1, '1943-04-20');
 
+INSERT INTO PERSON(Person_ID, F_Name, M_Name, L_Name, Address, Gender, Birth_Date)
+   VALUES('P005', 'Nancy', 'M', 'Carney', '234 Viking Drive', 2, '1963-03-30');
+
+INSERT INTO PERSON(Person_ID, F_Name, M_Name, L_Name, Address, Gender, Birth_Date)
+   VALUES('P006', 'Victoria', 'L', 'Rush', '221B Baker Street', 2, '1981-09-03');
+   
+INSERT INTO EMPLOYEE(Person_ID, Start_Date, Specialization, Doctor_Type)
+   VALUES('P001', '1998-08-12', 'Cardiology', 'Permanent');
+
+INSERT INTO EMPLOYEE(Person_ID, Start_Date, Specialization, Doctor_Type)
+   VALUES('P004', '2015-06-01', 'Orthopedic', 'Visiting');
+
+INSERT INTO EMPLOYEE(Person_ID, Start_Date, Specialization, Doctor_Type)
+	VALUES('P003', '1987-01-31', 'Nurse', NULL);
+ 
+INSERT INTO EMPLOYEE(Person_ID, Start_Date, Specialization, Doctor_Type)
+	VALUES('P005', '2007-10-31', 'Receptionist', NULL);
+
+INSERT INTO CLASS1_PATIENT(Person_ID, Doctor_ID)
+	VALUES('P002', 'P004');
+
+INSERT INTO ROOM(Room_ID, Room_Type, Nurse_ID)
+	VALUES(NEWID(), 'Single', 'P003');
+   
 GO
