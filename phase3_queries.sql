@@ -1,5 +1,5 @@
 --1
-SELECT Start_Date, Specialization FROM EMPLOYEE WHERE Doctor_Type IS NOT NULL;  *
+SELECT Start_Date, Specialization FROM EMPLOYEE WHERE Doctor_Type IS NOT NULL;
 --WORKS
 
 --2
@@ -53,7 +53,7 @@ FROM (
 	HAVING DATEDIFF(day, Admission_Date, Discharge_Date)=MAX(DATEDIFF(day, Admission_Date, Discharge_Date))
 	ORDER BY Duration DESC
 ) as Temp
-
+--WORKS
 
 --8
 SELECT TOP(1) DATEPART(year, Date_Of_Visit) AS year, Description
@@ -76,7 +76,11 @@ ORDER BY Count(TREATMENT.Treatment_ID)
 
 
 --10
-SELECT COUNT(Admission_Date>(SELECT MIN(DATEDIFF(day, Start_Date, GETDATE())) FROM EMPLOYEE )) FROM CLASS2_PATIENT;
+SELECT COUNT(Admission_Date) 
+FROM CLASS2_PATIENT
+WHERE Admission_Date>(SELECT TOP 1 DATEDIFF(day, Start_Date, GETDATE()) FROM EMPLOYEE )
+GROUP BY CLASS2_PATIENT.Person_ID;
+--WORKS
 
 
 --11
@@ -119,7 +123,6 @@ WHERE Person_ID IN (
 	) as Tmp(Patient_ID, Doctor_ID, Cnt)
 );
 --WORKS
-
 
 --14
 SELECT F_Name, M_Name, L_Name, DATEDIFF(year, Birth_Date, GETDATE()) as Age
