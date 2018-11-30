@@ -56,7 +56,14 @@ FROM (
 
 
 --8
-SELECT TOP 1 DATEPART(year, Date_Of_Visit) AS year, Description FROM RECORD WHERE year=(SELECT year FROM (SELECT DATEPART(year, Date_Of, Visit) AS year, COUNT(*) FROM RECORD GROUP BY year HAVING COUNT(*)=MAX(COUNT(*) ) ) ) AND Description=(SELECT Description FROM (SELECT Description, COUNT(*) FROM RECORD WHERE DATEPART(year, Date_Of_Visit)=year GROUP BY Description HAVING COUNT(*)=MAX(COUNT(*) ) ) );
+SELECT TOP(1) DATEPART(year, Date_Of_Visit) AS year, Description
+FROM (
+	SELECT Date_Of_Visit, Description, COUNT(*) as Cnt
+	FROM RECORD
+	GROUP BY Date_Of_Visit, Description
+) as Tmp
+ORDER BY Cnt DESC
+--WORKS
 
 
 --9
