@@ -80,6 +80,7 @@ FROM CLASS2_PATIENT,
 	PHONE_NUMBER,
 	RECORD
 WHERE ASSIGNED.Class2_Patient_ID=Patient_ID AND CLASS2_PATIENT.Person_ID=Patient_ID AND V.Person_ID=Patient_ID AND PHONE_NUMBER.Person_ID=Patient_ID AND Admission_Date BETWEEN Date_Of_Visit AND DATEADD(day, 7, Date_Of_Visit);
+--WORKS
 
 
 
@@ -88,6 +89,7 @@ SELECT DATEPART(month, Date_Of_Visit), SUM(CASH.Amount)
 FROM RECORD, MEDICAL_BILL_PAYMENT, CASH, INSURANCE
 WHERE DATEPART(year, Date_Of_Visit)=2017
 GROUP BY DATEPART(month, Date_Of_Visit);
+--WORKS
 
 
 --13
