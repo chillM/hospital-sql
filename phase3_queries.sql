@@ -41,7 +41,14 @@ SELECT F_Name, M_Name, L_Name FROM EMPLOYEE, PERSON WHERE Doctor_Type IS NOT NUL
 
 
 --6
-SELECT Provider, COUNT(*) FROM INSURANCE, INSURANCE_PROVIDER WHERE Amount=Coverage GROUP BY Provider;
+SELECT COUNT(Patient_ID) as NumPatients, Provider
+FROM INSURANCE, INSURANCE_PROVIDER, MEDICAL_BILL_PAYMENT
+WHERE MEDICAL_BILL_PAYMENT.Payment_ID = Insurance.Payment_ID
+	AND Insurance.Payment_ID NOT IN (
+		SELECT Payment_ID from CASH
+	)
+GROUP BY Provider
+--WORKS
 
 
 --7
