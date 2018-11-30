@@ -93,12 +93,29 @@ GROUP BY DATEPART(month, Date_Of_Visit);
 
 
 --13
-SELECT F_Name, M_Name, L_Name FROM PERSON WHERE Person_ID IN (SELECT Doctor_ID FROM (SELECT Patient_ID, Doctor_ID, COUNT(*) FROM CLASS1_PATIENT, RECORD WHERE Person_ID=Patient_ID GROUP BY Patient_ID HAVING COUNT(*) = 1) );
+SELECT F_Name, M_Name, L_Name
+FROM PERSON
+WHERE Person_ID IN (
+	SELECT Doctor_ID
+	FROM (
+		SELECT Patient_ID, Doctor_ID, COUNT(*)
+		FROM CLASS1_PATIENT, RECORD
+		WHERE Person_ID=Patient_ID
+		GROUP BY Patient_ID, Doctor_ID
+		HAVING COUNT(*) = 1
+	) as Tmp(Patient_ID, Doctor_ID, Cnt)
+);
+--WORKS
 
 
 --14
-SELECT F_Name, M_Name, L_Name, DATEDIFF(year, Birth_Date, GETDATE()) FROM POTENTIAL_PATIENT, PERSON WHERE Patient_ID=Person_ID;
-
+SELECT F_Name, M_Name, L_Name, DATEDIFF(year, Birth_Date, GETDATE()) as Age
+FROM PERSON per
+WHERE Person_ID IN (
+	SELECT Person_ID
+	FROM PotentialPatient
+);
+--WORKS
 
 
 
