@@ -1,5 +1,5 @@
 --1
-SELECT Start_Date, Specialization FROM EMPLOYEE WHERE Doctor_Type IS NOT NULL;
+(SELECT Doctor_Type, Start_Date, Specialization FROM EMPLOYEE WHERE Doctor_Type="Trainee") UNION (SELECT Doctor_Type, Start_Date, Specialization FROM EMPLOYEE WHERE Doctor_Type="Visiting") UNION (SELECT Doctor_Type, Start_Date, Specialization FROM EMPLOYEE WHERE Doctor_Type="Permanent");
 --WORKS
 
 --2
