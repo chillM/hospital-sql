@@ -156,17 +156,38 @@ CREATE TABLE INSURANCE
 --Person
 INSERT INTO PERSON(Person_ID, F_Name, M_Name, L_Name, Address, Gender, Birth_Date)
    VALUES
-   ('P001', 'Mungo', 'B', 'Jerry', '5454 XYZ Drive', 1, '1955-05-05'),
-   ('P002', 'Bobby', 'B', 'Smith', '123 Rocky Road', 1, '1978-02-16'),
-   ('P003', 'Julie', 'R', 'Johnson', '808 Lorrie Ave', 2, '1986-10-07'),
-   ('P004', 'Rick', 'E', 'Sanchez', '908 Milky Way', 1, '1943-04-20'),
-   ('P005', 'Nancy', 'M', 'Carney', '234 Viking Drive', 2, '1963-03-30'),
-   ('P006', 'Victoria', 'L', 'Rush', '221B Baker Street', 2, '1981-09-03'),
-   ('P007', 'George', NULL, 'James', '221B Penny Lane', 2, '1971-02-03'),
-   ('P008', 'Phil', NULL, 'Lays', '9200 Windy Lane', 2, '1996-04-24'),
-   ('P009', 'Charles', NULL, 'Ronson', '6200 Worthington Drive', 2, '2001-02-14'),
-   ('P010', 'Diana', NULL, 'Ross', '249 Syracuse Drive', 2, '1950-05-22'),
-   ('P011', 'Colonal', NULL, 'Mustard', '6226 Clue Lane', 2, '1937-12-23');
+   ('P100', 'Mungo', 'B', 'Jerry', '5454 XYZ Drive', 1, '1955-05-05'),
+   ('P101', 'Bobby', 'B', 'Smith', '123 Rocky Road', 1, '1978-02-16'),
+   ('P102', 'Julie', 'R', 'Johnson', '808 Lorrie Ave', 2, '1986-10-07'),
+   ('P103', 'Rick', 'E', 'Sanchez', '908 Milky Way', 1, '1943-04-20'),
+   ('P104', 'Nancy', 'M', 'Carney', '234 Viking Drive', 2, '1963-03-30'),
+   ('P105', 'Victoria', 'L', 'Rush', '221B Baker Street', 2, '1981-09-03'),
+   ('P106', 'George', NULL, 'James', '221B Penny Lane', 1, '1971-02-03'),
+   ('P107', 'Phil', NULL, 'Lays', '9200 Windy Lane', 1, '1996-04-24'),
+   ('P108', 'Charles', NULL, 'Ronson', '6200 Worthington Drive', 1, '2001-02-14'),
+   ('P109', 'Diana', NULL, 'Ross', '249 Syracuse Drive', 2, '1950-05-22'),
+   ('P110', 'Colonal', NULL, 'Mustard', '6226 Clue Lane', 1, '1937-12-23'),
+   ('P111', 'Bob', 'N', 'Ross', '1943 Happy Little Accidents Ave', 1, '1942-10-29'),
+   ('P112', 'Karl', NULL, 'Popper', '101 Metaphysics Drive', 1, '1902-10-28'),
+   ('P113', 'Bruce', NULL, 'Banner', '321 Oak Boulevard', 1, '1965-08-17'),
+   ('P114', 'Neil','D', 'Tyson', '200 Central Park West', 1, '1958-10-05'),
+   ('P115', 'Alan', NULL, 'Turing', '1101 Lambda Lane', 1, '1912-06-23'),
+   ('P116', 'Donald', NULL, 'Knuth', '1011 Combinatorics Way', 1, '1938-01-10'),
+   ('P117', 'Grace', NULL, 'Hopper', '1010 COBOL Parkway', 2, '1906-12-09'),
+   ('P118', 'Guido', 'V', 'Rossum', '1001 Benevolent Dictator For Life Blvd', 1, '1956-01-31'),
+   ('P119', 'Dennis', NULL, 'Ritchie', '1000 C-Side Blvd', 1, '1941-09-09'),
+   ('P120', 'Paul', NULL, 'Hudak', '1111 Functional Street', 1, '1952-07-15'),
+   ('P121', 'Rob', 'C', 'Pike', '1000 Go Lane', 1, '1956-07-03'),
+   ('P122', 'Robert', NULL, 'Griesemer', '1001 Go Lane', 1, '1950-04-01'),
+   ('P123', 'Ken', 'L', 'Thompson', '1010 Go Lane', 1, '1943-02-04'),
+   ('P124', 'Urban', NULL, 'Müller', '10101 Esoteric Lane', 1, '1971-01-25'),
+   ('P125', 'Haskell', NULL, 'Curry', '1011 Functional Street', 1, '1900-09-12'),
+   ('P126', 'John', NULL, 'McCarthy', '1101 Functional Street', 1, '1927-09-04'),
+   ('P127', 'Claude', 'E', 'Shannon', '11010 C23khsirfRiES Ave', 1, '1916-04-30'),
+   ('P128', 'Linus', 'B', 'Torvalds', '10000 Kernel Drive', 1, '1969-12-28'),
+   ('P129', 'Stephen', NULL, 'Wolfram', '10001 Automata Pkwy', 1, '1959-08-29');
+   
+
 
 --Employee
 INSERT INTO EMPLOYEE(Person_ID, Start_Date, Specialization, Doctor_Type)
@@ -174,10 +195,8 @@ INSERT INTO EMPLOYEE(Person_ID, Start_Date, Specialization, Doctor_Type)
    ('P001', '1998-08-12', 'Cardiology', 'Permanent'),
    ('P004', '2015-06-01', 'Orthopedic', 'Visiting'),
    ('P003', '1987-01-31', 'Nurse', NULL),
-   ('P005', '2007-10-31', 'Receptionist', NULL);
-
-INSERT INTO EMPLOYEE(Person_ID, Start_Date, Specialization, Doctor_Type)
-	VALUES('P008', '2014-11-21', 'Receptionist', NULL);
+   ('P005', '2007-10-31', 'Receptionist', NULL),
+   ('P008', '2014-11-21', 'Receptionist', NULL);
 
 --Class 1 Patient
 INSERT INTO CLASS1_PATIENT(Person_ID, Doctor_ID)
@@ -224,7 +243,11 @@ INSERT INTO MEDICINE(Medicine_Code, Name, Price, Date_Of_Expiration, Quantity, P
 	VALUES
 	('c1e37f61-455f-4b51-a43a-ea1d20619a1f', 'Amoxicillin', '$4.00', '20200927', 50, 'd4178aa7-c5ab-44d8-8770-ffdc3b3baa5e'),
 	('f703936a-f725-4ba8-a031-8af9a6b30e05', 'Acetaminophen', '$0.90', '20250713', 1000, '3565cc04-0d42-46d8-b7ec-1fb1ca20703a'),
-	('e97749f2-ceb2-4cd7-82c3-2fac36379d0b', 'Daklinza', '$49400.00', '20220404', 10, '68ead9e2-4a70-4202-903c-43104e2a2e65');
+	('e97749f2-ceb2-4cd7-82c3-2fac36379d0b', 'Daklinza', '$49400.00', '20220404', 10, '68ead9e2-4a70-4202-903c-43104e2a2e65'),
+	('0406448d-3e0d-41d0-b49d-ec8500a9cdb8', 'Etoposide', '$35.00', '20220101', 100, '68ead9e2-4a70-4202-903c-43104e2a2e65'),
+	('303ada46-46eb-459b-8420-d6775ecfcac3', 'Micafungin', '$300.00', '20220101', 99, '3565cc04-0d42-46d8-b7ec-1fb1ca20703a'),
+	('ff77113c-4c92-4762-be62-0e83b433c8cc', 'AmBisome', '$267.00', '20220101', 12, '3565cc04-0d42-46d8-b7ec-1fb1ca20703a'),
+	('b310da15-bceb-4cde-9a34-3dcfa9a00eaf', 'Diphenhydramine', '$22.00', '20220101', 365, '4178aa7-c5ab-44d8-8770-ffdc3b3baa5e');
 
 --Treatment
 INSERT INTO TREATMENT(Treatment_ID, Name, Duration)
