@@ -8,26 +8,26 @@ SELECT F_Name, M_Name, L_Name FROM PERSON, EMPLOYEE, CLASS2_PATIENT WHERE PERSON
 
 
 --3
-SELECT *
-FROM CLASS2_PATIENT,
-	ATTENDS,
-	(SELECT Visitor_ID, Person_ID, Name as V_Name, Address, Contact_Information, Room_ID
-		FROM VISITOR) as V,
-	(SELECT Medicine_Code, Name as M_Name, Price, Date_Of_Expiration, Quantity, Pharmacy_ID
-		FROM MEDICINE) as M,
-	(SELECT Name as T_Name, Duration
-		FROM TREATMENT) as T,
-	ASSIGNED,
-	PHONE_NUMBER,
-	RECORD
-WHERE ASSIGNED.Class2_Patient_ID=Patient_ID AND CLASS2_PATIENT.Person_ID=Patient_ID AND V.Person_ID=Patient_ID AND PHONE_NUMBER.Person_ID=Patient_ID AND Admission_Date BETWEEN Date_Of_Visit AND DATEADD(day, 7, Date_Of_Visit);
-
-UNION
-
-(SELECT Doctor_Type FROM 
-(SELECT Doctor_Type, COUNT(*) 
-FROM EMPLOYEE WHERE Person_ID=(SELECT Person_ID FROM CLASS1_PATIENT, CLASS2_PATIENT, EMPLOYEE, PERSON WHERE EMPLOYEE.Person_ID=PERSON.Person_ID AND 5<ALL (SELECT COUNT(Doctor_ID) FROM CLASS1_PATIENT WHERE Doctor_ID=EMPLOYEE.Person_ID) AND 10<ALL (SELECT COUNT(Doctor_ID) FROM CLASS2_PATIENT WHERE Doctor_ID=EMPLOYEE.Person_ID) )  
-GROUP BY Doctor_Type HAVING COUNT(*)=MAX(COUNT(*) ) );
+WITH Top5 AS
+(
+	SELECT TOP(5) DATEDIFF(year, Birth_Date, GETDATE()) as Age, Person.Person_ID, Doctor_Type
+	FROM PERSON, EMPLOYEE
+	WHERE Person.Person_ID = EMPLOYEE.Person_ID
+		AND Doctor_Type IS NOT NULL
+	ORDER BY Person.Person_ID ASC
+)
+SELECT DISTINCT Doctor_Type, AverageAge.Age
+FROM Top5
+CROSS JOIN (
+	SELECT AVG(Age) as Age
+	FROM Top5
+) as AverageAge
+WHERE Doctor_Type in (
+	SELECT TOP(1) Doctor_Type
+	FROM Top5
+	GROUP BY Doctor_Type
+	ORDER BY COUNT(Doctor_Type) DESC
+)
 
 
 
