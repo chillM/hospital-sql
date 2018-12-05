@@ -4,6 +4,8 @@ DROP DATABASE hospital
 
 CREATE DATABASE hospital
 
+GO
+
 USE hospital
 
 --Table creation--
@@ -250,7 +252,7 @@ INSERT INTO MEDICINE(Medicine_Code, Name, Price, Date_Of_Expiration, Quantity, P
 	('0406448d-3e0d-41d0-b49d-ec8500a9cdb8', 'Etoposide', '$35.00', '20220101', 100, '68ead9e2-4a70-4202-903c-43104e2a2e65'),
 	('303ada46-46eb-459b-8420-d6775ecfcac3', 'Micafungin', '$300.00', '20220101', 99, '3565cc04-0d42-46d8-b7ec-1fb1ca20703a'),
 	('ff77113c-4c92-4762-be62-0e83b433c8cc', 'AmBisome', '$267.00', '20220101', 12, '3565cc04-0d42-46d8-b7ec-1fb1ca20703a'),
-	('b310da15-bceb-4cde-9a34-3dcfa9a00eaf', 'Diphenhydramine', '$22.00', '20220101', 365, '4178aa7-c5ab-44d8-8770-ffdc3b3baa5e');
+	('b310da15-bceb-4cde-9a34-3dcfa9a00eaf', 'Diphenhydramine', '$22.00', '20220101', 365, 'e4178aa7-c5ab-44d8-8770-ffdc3b3baa5e');
 
 --Treatment
 INSERT INTO TREATMENT(Treatment_ID, Name, Duration)
@@ -261,15 +263,15 @@ INSERT INTO TREATMENT(Treatment_ID, Name, Duration)
 --Assigned
 INSERT INTO ASSIGNED(Class2_Patient_ID, Medicine_Code, Treatment_ID)
 	VALUES
-	('P002', 'c1e37f61-455f-4b51-a43a-ea1d20619a1f', '86f9d393-ae87-4247-9cd3-40d1197b2f51'),
-	('P003', 'c1e37f61-455f-4b51-a43a-ea1d20619a1f', '86f9d393-ae87-4247-9cd3-40d1197b2f51'),
-	('P003', 'f703936a-f725-4ba8-a031-8af9a6b30e05', '09610573-ec8b-40a6-8698-f40479b040dc');
+	('P101', 'c1e37f61-455f-4b51-a43a-ea1d20619a1f', '86f9d393-ae87-4247-9cd3-40d1197b2f51'),
+	('P111', 'c1e37f61-455f-4b51-a43a-ea1d20619a1f', '86f9d393-ae87-4247-9cd3-40d1197b2f51'),
+	('P128', 'f703936a-f725-4ba8-a031-8af9a6b30e05', '09610573-ec8b-40a6-8698-f40479b040dc');
 
 --Phone Number
 INSERT INTO PHONE_NUMBER(Person_ID, Number)
 	VALUES
-    ('P001', '972-867-5309'),
-	('P002', '555-555-5555')
+    ('P101', '972-867-5309'),
+	('P102', '555-555-5555')
 
 --Record
 INSERT INTO RECORD(Record_ID, Patient_ID, Date_Of_Visit, Description, Appointment, Receptionist_ID)
@@ -282,9 +284,9 @@ INSERT INTO RECORD(Record_ID, Patient_ID, Date_Of_Visit, Description, Appointmen
 --Medical Bill Payment
 INSERT INTO MEDICAL_BILL_PAYMENT(Payment_ID, Patient_ID, Receptionist_ID)
 	VALUES
-	('b9f17e90-c7e1-4eec-a3d0-d2c8f62d2b31', 'P100', '105'),
+	('b9f17e90-c7e1-4eec-a3d0-d2c8f62d2b31', 'P100', 'P105'),
 	('f69489f8-dfbe-4ff4-b63d-b446198066d6', 'P121', 'P105'),
-	('4499f15f-ffb4-4aa3-a603-50ed5dbfa17d', '117', '106');
+	('4499f15f-ffb4-4aa3-a603-50ed5dbfa17d', 'P117', 'P106');
 
 --Cash
 INSERT INTO CASH(Payment_ID, Amount)
@@ -306,3 +308,4 @@ INSERT INTO INSURANCE(Payment_ID, Insurance_ID, Amount, Coverage)
 
 
 GO
+
