@@ -1,4 +1,5 @@
 Use hospital;
+
 --1
 (SELECT Doctor_Type, Start_Date, Specialization FROM EMPLOYEE WHERE Doctor_Type='Trainee') UNION (SELECT Doctor_Type, Start_Date, Specialization FROM EMPLOYEE WHERE Doctor_Type='Visiting') UNION (SELECT Doctor_Type, Start_Date, Specialization FROM EMPLOYEE WHERE Doctor_Type='Permanent');
 
@@ -41,23 +42,36 @@ SELECT M.Name FROM TopTreatment, TREATMENT, MEDICINE AS M, ASSIGNED WHERE TopTre
 --WORKS
 
 --5
-SELECT F_Name, M_Name, L_Name FROM EMPLOYEE, PERSON WHERE Doctor_Type IS NOT NULL AND PERSON.Person_ID=EMPLOYEE.Person_ID AND EMPLOYEE.Person_ID NOT IN (SELECT ATTENDS.Doctor_ID FROM CLASS1_PATIENT, ATTENDS, RECORD WHERE CLASS1_PATIENT.Doctor_ID=ATTENDS.Doctor_ID AND Date_Of_Visit > (SELECT DATEADD(month, -5, (SELECT GETDATE() ) ) ) );
---WORKS
-
+--Find all the doctors who have not had a patient in the last 5 months. (Hint:
+--Consider the date of payment as the day the doctor has attended a patient/been
+--consulted by a patient.
+SELECT F_Name, M_Name, L_Name 
+FROM EMPLOYEE, PERSON 
+WHERE Doctor_Type IS NOT NULL AND 
+	  PERSON.Person_ID=EMPLOYEE.Person_ID AND 
+	  EMPLOYEE.Person_ID NOT IN (
+			SELECT ATTENDS.Doctor_ID 
+			FROM CLASS1_PATIENT, ATTENDS, RECORD 
+			WHERE CLASS1_PATIENT.Doctor_ID=ATTENDS.Doctor_ID AND 
+			Date_Of_Visit > DATEADD( month, -5, ( GETDATE() ) )
+	  );
 
 --6
-SELECT COUNT(Patient_ID) as NumPatients, Provider
+--Find the total number of patients who have paid completely using insurance 
+--and the name of the insurance provider.
+SELECT COUNT(Patient_ID) as Number_Of_Patients, Provider
 FROM INSURANCE, INSURANCE_PROVIDER, MEDICAL_BILL_PAYMENT
-WHERE MEDICAL_BILL_PAYMENT.Payment_ID = Insurance.Payment_ID
-	AND Insurance.Payment_ID NOT IN (
-		SELECT Payment_ID from CASH
+WHERE MEDICAL_BILL_PAYMENT.Payment_ID = INSURANCE.Payment_ID
+	AND INSURANCE.Insurance_ID=INSURANCE_PROVIDER.Insurance_ID
+	AND NOT EXISTS (
+		SELECT * FROM CASH WHERE MEDICAL_BILL_PAYMENT.Payment_ID=Payment_ID
 	)
-GROUP BY Provider
---WORKS
+GROUP BY Provider;
 
 
 --7
-SELECT Duration
+--Find the most occupied room in the hospital and the duration of the stay.
+SELECT Room_ID AS Most_Occupied_Room, Duration AS Duration_Of_Stay_In_Days
 FROM (
 	SELECT TOP(1) Room_ID, DATEDIFF(day, Admission_Date, Discharge_Date) as Duration
 	FROM CLASS2_Patient
@@ -65,14 +79,14 @@ FROM (
 	HAVING DATEDIFF(day, Admission_Date, Discharge_Date)=MAX(DATEDIFF(day, Admission_Date, Discharge_Date))
 	ORDER BY Duration DESC
 ) as Temp
---WORKS
+
 
 --8
-SELECT TOP(1) DATEPART(year, Date_Of_Visit) AS year, Description
+SELECT TOP(1) year, Description, Cnt
 FROM (
-	SELECT Date_Of_Visit, Description, COUNT(*) as Cnt
+	SELECT DATEPART(year, Date_Of_Visit) as year, Description, COUNT(*) as Cnt
 	FROM RECORD
-	GROUP BY Date_Of_Visit, Description
+	GROUP BY DATEPART(year, Date_Of_Visit), Description
 ) as Tmp
 ORDER BY Cnt DESC
 --WORKS
@@ -88,10 +102,9 @@ ORDER BY Count(TREATMENT.Treatment_ID)
 
 
 --10
-SELECT COUNT(Admission_Date) 
+SELECT COUNT(Admission_Date) as Num_Patients
 FROM CLASS2_PATIENT
-WHERE DATEDIFF(day, Admission_Date, GETDATE())>(SELECT TOP 1 DATEDIFF(day, Start_Date, GETDATE()) FROM EMPLOYEE )
-GROUP BY CLASS2_PATIENT.Person_ID;
+WHERE DATEDIFF(day, Admission_Date, GETDATE()) < (SELECT TOP 1 DATEDIFF(day, Start_Date, GETDATE()) FROM EMPLOYEE ORDER BY DATEDIFF(day, Start_Date, GETDATE()) ASC);
 --WORKS
 
 
@@ -137,8 +150,5 @@ WHERE Person_ID IN (
 	SELECT Person_ID
 	FROM PotentialPatient
 );
-
-GO
-
 
 
