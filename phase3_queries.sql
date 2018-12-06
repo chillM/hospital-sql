@@ -108,15 +108,16 @@ WHERE ASSIGNED.Class2_Patient_ID=Patient_ID AND CLASS2_PATIENT.Person_ID=Patient
 
 
 
---12
-SELECT DATEPART(month, Date_Of_Visit), SUM(CASH.Amount)
-FROM RECORD, MEDICAL_BILL_PAYMENT, CASH, INSURANCE
+--12 - Final (correct output)
+SELECT DATEPART(month, Date_Of_Visit) as Month, SUM(CASH.Amount) as Total_Paid
+FROM RECORD, MEDICAL_BILL_PAYMENT, CASH
 WHERE DATEPART(year, Date_Of_Visit)=2017
+	AND RECORD.Payment_ID=MEDICAL_BILL_PAYMENT.Payment_ID
+	AND MEDICAL_BILL_PAYMENT.Payment_ID=CASH.Payment_ID
 GROUP BY DATEPART(month, Date_Of_Visit);
---WORKS
 
 
---14 - Final (correct output)
+--13 - Final (correct output)
 SELECT F_Name, M_Name, L_Name
 FROM PERSON
 WHERE Person_ID IN (

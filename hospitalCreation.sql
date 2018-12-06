@@ -107,18 +107,6 @@ CREATE TABLE PHONE_NUMBER
    FOREIGN KEY (Person_ID) REFERENCES PERSON(Person_ID) );
 
 
-CREATE TABLE RECORD
-(  Record_ID UNIQUEIDENTIFIER NOT NULL,
-   Patient_ID CHAR(4) NOT NULL,
-   Date_Of_Visit DATE NOT NULL,
-   Description VARCHAR(500),
-   Appointment UNIQUEIDENTIFIER NOT NULL,
-   Receptionist_ID CHAR(4) NOT NULL,
-   PRIMARY KEY (Record_ID),
-   FOREIGN KEY (Patient_ID) REFERENCES PERSON(Person_ID),
-   FOREIGN KEY (Receptionist_ID) REFERENCES PERSON(Person_ID) );
-
-
 CREATE TABLE MEDICAL_BILL_PAYMENT
 (  Payment_ID UNIQUEIDENTIFIER NOT NULL,
    Patient_ID CHAR(4) NOT NULL,
@@ -128,8 +116,6 @@ CREATE TABLE MEDICAL_BILL_PAYMENT
    FOREIGN KEY (Receptionist_ID) REFERENCES PERSON(Person_ID) );
 
 
-
-
 CREATE TABLE CASH
 (  Payment_ID UNIQUEIDENTIFIER NOT NULL,
    Amount MONEY NOT NULL,
@@ -137,12 +123,10 @@ CREATE TABLE CASH
    FOREIGN KEY (Payment_ID) REFERENCES MEDICAL_BILL_PAYMENT(Payment_ID) );
 
 
-
 CREATE TABLE INSURANCE_PROVIDER
 (  Insurance_ID UNIQUEIDENTIFIER NOT NULL,
    Provider VARCHAR(100) NOT NULL,
    PRIMARY KEY (Insurance_ID) );
-
 
 
 CREATE TABLE INSURANCE
@@ -153,6 +137,19 @@ CREATE TABLE INSURANCE
    PRIMARY KEY (Payment_ID),
    FOREIGN KEY (Payment_ID) REFERENCES MEDICAL_BILL_PAYMENT(Payment_ID),
    FOREIGN KEY (Insurance_ID) REFERENCES INSURANCE_PROVIDER(Insurance_ID) );
+   
+
+CREATE TABLE RECORD
+(  Record_ID UNIQUEIDENTIFIER NOT NULL,
+   Patient_ID CHAR(4) NOT NULL,
+   Date_Of_Visit DATE NOT NULL,
+   Description VARCHAR(500),
+   Payment_ID UNIQUEIDENTIFIER NOT NULL,
+   Receptionist_ID CHAR(4) NOT NULL,
+   PRIMARY KEY (Record_ID),
+   FOREIGN KEY (Patient_ID) REFERENCES PERSON(Person_ID),
+   FOREIGN KEY (Payment_ID) REFERENCES MEDICAL_BILL_PAYMENT(Payment_ID),
+   FOREIGN KEY (Receptionist_ID) REFERENCES PERSON(Person_ID) );
 
 --Populate the tables with data--
 --Person
@@ -274,33 +271,35 @@ INSERT INTO PHONE_NUMBER(Person_ID, Number)
 	('P102', '555-555-5555'),
 	('P121', '800-555-3311');
 
---Record
-INSERT INTO RECORD(Record_ID, Patient_ID, Date_Of_Visit, Description, Appointment, Receptionist_ID)
-	VALUES
-	('80fb52bb-6999-44cc-9489-dd13782a69a9', 'P100', '2017-06-10', 'Long description here', 'd46ad8e7-9895-4cde-a9f5-606fab789e83', 'P105'),
-	('5434c983-90b0-4d88-93ae-f4f648fb9a86', 'P117', '2017-11-10', 'Feeling ill', 'f5cc3240-f034-487f-8420-eb91533565ab', 'P106'),
-	('f3d0ff3f-3e9f-483b-bc13-a75a5810794a', 'P117', '2017-11-25', 'Dizzy spell at work', '73c5c18f-c8d1-485d-aa9d-263f91e70215', 'P106'),
-	('9e7b9b93-ce2f-488b-bf5d-03cb410003ae', 'P111', '2017-07-08', 'First Visit', '20ee8a07-94b4-47d9-8420-5333c98fd361', 'P105'),
-	('2c46cd58-941a-4a84-a20e-5b2b41dac8e4', 'P111', '2017-07-18', 'Second Visit', '2f1b746e-7dec-42fc-8632-6e9c1b185741', 'P105'),
-	('0e2e0d47-972d-42e4-b675-f229e6edf675', 'P111', '2017-10-08', 'Third Visit', 'f67d418f-cf43-410c-ae36-3cdcefafcb1d', 'P106'),
-	('a6628231-cff3-4c77-bf30-03dcba34fc4c', 'P111', '2018-11-27', 'Admitted as Class 2', 'e0aef839-8d12-412f-8edf-0d88b000dea6', 'P105'),
-	('223442a3-9fb2-49e0-9d7c-1e7a26144b54', 'P121', '2016-03-18', 'First Visit', '368b8003-ef87-4285-9b5f-b7555d5d8785', 'P105'),
-	('3c52e920-c96a-4ea9-888b-2a27855c155d', 'P121', '2018-08-09', 'Second Visit', '8d7dc9e4-8a14-4197-926d-ea8ab235b720', 'P105'),
-	('075c5b02-ea32-4db3-adf2-68f7fc8eb4e6', 'P121', '2018-09-10', 'Third Visit', 'ceee1ee1-f8aa-40f6-a18b-311b4592fe48', 'P106'),
-	('54b9c43a-fa1e-4b63-bc95-1fca426f32cd', 'P121', '2018-09-10', 'Fourth Visit', '1c131320-5652-43e7-9a64-97e25d9f1967', 'P106');
 
 --Medical Bill Payment
 INSERT INTO MEDICAL_BILL_PAYMENT(Payment_ID, Patient_ID, Receptionist_ID)
 	VALUES
-	('b9f17e90-c7e1-4eec-a3d0-d2c8f62d2b31', 'P100', 'P105'),
+	('d46ad8e7-9895-4cde-a9f5-606fab789e83', 'P100', 'P105'),
+	('f5cc3240-f034-487f-8420-eb91533565ab', 'P117', 'P106'),
 	('f69489f8-dfbe-4ff4-b63d-b446198066d6', 'P121', 'P105'),
-	('4499f15f-ffb4-4aa3-a603-50ed5dbfa17d', 'P117', 'P106');
+	('73c5c18f-c8d1-485d-aa9d-263f91e70215', 'P117', 'P106'),
+	('20ee8a07-94b4-47d9-8420-5333c98fd361', 'P111', 'P105'),
+	('2f1b746e-7dec-42fc-8632-6e9c1b185741', 'P111', 'P105'),
+	('f67d418f-cf43-410c-ae36-3cdcefafcb1d', 'P111', 'P106'),
+	('e0aef839-8d12-412f-8edf-0d88b000dea6', 'P111', 'P105'),
+	('8d7dc9e4-8a14-4197-926d-ea8ab235b720', 'P121', 'P105'),
+	('ceee1ee1-f8aa-40f6-a18b-311b4592fe48', 'P121', 'P106'),
+	('1c131320-5652-43e7-9a64-97e25d9f1967', 'P121', 'P106');
+
 
 --Cash
 INSERT INTO CASH(Payment_ID, Amount)
 	VALUES
-    ('b9f17e90-c7e1-4eec-a3d0-d2c8f62d2b31', 2000),
-	('f69489f8-dfbe-4ff4-b63d-b446198066d6', 1200);
+    ('d46ad8e7-9895-4cde-a9f5-606fab789e83', 2000),
+	('f69489f8-dfbe-4ff4-b63d-b446198066d6', 1200),
+	('e0aef839-8d12-412f-8edf-0d88b000dea6', 500),
+	('8d7dc9e4-8a14-4197-926d-ea8ab235b720', 1000),
+	('ceee1ee1-f8aa-40f6-a18b-311b4592fe48', 100),
+	('20ee8a07-94b4-47d9-8420-5333c98fd361', 300),
+	('1c131320-5652-43e7-9a64-97e25d9f1967', 1800);
+
+
 
 --Insurance Provider
 INSERT INTO INSURANCE_PROVIDER(Insurance_ID, Provider)
@@ -311,8 +310,29 @@ INSERT INTO INSURANCE_PROVIDER(Insurance_ID, Provider)
 --Insurance
 INSERT INTO INSURANCE(Payment_ID, Insurance_ID, Amount, Coverage)
 	VALUES
-    ('b9f17e90-c7e1-4eec-a3d0-d2c8f62d2b31', 'acb32635-a23d-48e5-aae7-7d6dd77589da', 5000, 3000),
-	('4499f15f-ffb4-4aa3-a603-50ed5dbfa17d', '2bfa19a9-c5ce-4815-865e-d4ee7e8ea63c', 1400, 6000);
+    ('d46ad8e7-9895-4cde-a9f5-606fab789e83', 'acb32635-a23d-48e5-aae7-7d6dd77589da', 5000, 3000),
+	('f5cc3240-f034-487f-8420-eb91533565ab', '2bfa19a9-c5ce-4815-865e-d4ee7e8ea63c', 1400, 6000),
+	('73c5c18f-c8d1-485d-aa9d-263f91e70215', 'acb32635-a23d-48e5-aae7-7d6dd77589da', 4000, 4000),
+	('20ee8a07-94b4-47d9-8420-5333c98fd361', 'acb32635-a23d-48e5-aae7-7d6dd77589da', 800, 500),
+	('2f1b746e-7dec-42fc-8632-6e9c1b185741', 'acb32635-a23d-48e5-aae7-7d6dd77589da', 2300, 2300),
+	('f67d418f-cf43-410c-ae36-3cdcefafcb1d', 'acb32635-a23d-48e5-aae7-7d6dd77589da', 1400, 1400),
+	('e0aef839-8d12-412f-8edf-0d88b000dea6', '2bfa19a9-c5ce-4815-865e-d4ee7e8ea63c', 5000, 4500),
+	('8d7dc9e4-8a14-4197-926d-ea8ab235b720', '2bfa19a9-c5ce-4815-865e-d4ee7e8ea63c', 1200, 200),
+	('ceee1ee1-f8aa-40f6-a18b-311b4592fe48', '2bfa19a9-c5ce-4815-865e-d4ee7e8ea63c', 1000, 900);
 
+--Record
+INSERT INTO RECORD(Record_ID, Patient_ID, Date_Of_Visit, Description, Payment_ID, Receptionist_ID)
+	VALUES
+	('80fb52bb-6999-44cc-9489-dd13782a69a9', 'P100', '2017-06-10', 'Long description here', 'd46ad8e7-9895-4cde-a9f5-606fab789e83', 'P105'),
+	('5434c983-90b0-4d88-93ae-f4f648fb9a86', 'P117', '2017-11-10', 'Feeling ill', 'f5cc3240-f034-487f-8420-eb91533565ab', 'P106'),
+	('f3d0ff3f-3e9f-483b-bc13-a75a5810794a', 'P117', '2017-11-25', 'Dizzy spell at work', '73c5c18f-c8d1-485d-aa9d-263f91e70215', 'P106'),
+	('9e7b9b93-ce2f-488b-bf5d-03cb410003ae', 'P111', '2017-07-08', 'First Visit', '20ee8a07-94b4-47d9-8420-5333c98fd361', 'P105'),
+	('2c46cd58-941a-4a84-a20e-5b2b41dac8e4', 'P111', '2017-07-18', 'Second Visit', '2f1b746e-7dec-42fc-8632-6e9c1b185741', 'P105'),
+	('0e2e0d47-972d-42e4-b675-f229e6edf675', 'P111', '2017-10-08', 'Third Visit', 'f67d418f-cf43-410c-ae36-3cdcefafcb1d', 'P106'),
+	('a6628231-cff3-4c77-bf30-03dcba34fc4c', 'P111', '2018-11-27', 'Admitted as Class 2', 'e0aef839-8d12-412f-8edf-0d88b000dea6', 'P105'),
+	('223442a3-9fb2-49e0-9d7c-1e7a26144b54', 'P121', '2016-03-18', 'First Visit', 'f69489f8-dfbe-4ff4-b63d-b446198066d6', 'P105'),
+	('3c52e920-c96a-4ea9-888b-2a27855c155d', 'P121', '2018-08-09', 'Second Visit', '8d7dc9e4-8a14-4197-926d-ea8ab235b720', 'P105'),
+	('075c5b02-ea32-4db3-adf2-68f7fc8eb4e6', 'P121', '2018-09-10', 'Third Visit', 'ceee1ee1-f8aa-40f6-a18b-311b4592fe48', 'P106'),
+	('54b9c43a-fa1e-4b63-bc95-1fca426f32cd', 'P121', '2018-10-11', 'Fourth Visit', '1c131320-5652-43e7-9a64-97e25d9f1967', 'P106');
 
 GO
