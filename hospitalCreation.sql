@@ -319,9 +319,6 @@ INSERT INTO INSURANCE_PROVIDER(Insurance_ID, Provider)
 --Insurance
 INSERT INTO INSURANCE(Payment_ID, Insurance_ID, Amount, Coverage)
 	VALUES
-    ('b9f17e90-c7e1-4eec-a3d0-d2c8f62d2b31', 'acb32635-a23d-48e5-aae7-7d6dd77589da', 5000, 3000),
-	('8fa72d4c-2614-4bd5-b2bc-a4b5fe55c1c7', 'acb32635-a23d-48e5-aae7-7d6dd77589da', 1000, 1000),
-	('788d5594-9c99-4358-adbb-4139d2bc4c76', 'acb32635-a23d-48e5-aae7-7d6dd77589da', 50, 50),
 	('4499f15f-ffb4-4aa3-a603-50ed5dbfa17d', '2bfa19a9-c5ce-4815-865e-d4ee7e8ea63c', 1400, 6000),
 	('cb6f953d-cd1d-47fd-bbbf-c4e17ccee73b', 'acb32635-a23d-48e5-aae7-7d6dd77589da', 1400, 1400),
     ('d46ad8e7-9895-4cde-a9f5-606fab789e83', 'acb32635-a23d-48e5-aae7-7d6dd77589da', 5000, 3000),
