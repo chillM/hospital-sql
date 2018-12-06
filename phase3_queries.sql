@@ -116,20 +116,20 @@ GROUP BY DATEPART(month, Date_Of_Visit);
 --WORKS
 
 
---13
+--14 - Final (correct output)
 SELECT F_Name, M_Name, L_Name
 FROM PERSON
 WHERE Person_ID IN (
 	SELECT Doctor_ID
-	FROM (
-		SELECT Patient_ID, Doctor_ID, COUNT(*)
-		FROM CLASS1_PATIENT, RECORD
-		WHERE Person_ID=Patient_ID
-		GROUP BY Patient_ID, Doctor_ID
-		HAVING COUNT(*) = 1
-	) as Tmp(Patient_ID, Doctor_ID, Cnt)
+	FROM CLASS1_PATIENT, RECORD
+	WHERE Person_ID=Patient_ID
+		AND Person_ID NOT IN (
+			SELECT Person_ID
+			FROM CLASS2_PATIENT
+		)
+	GROUP BY Patient_ID, Doctor_ID
+	HAVING COUNT(*) = 1
 );
---WORKS
 
 --14 - Final (correct output)
 SELECT F_Name, M_Name, L_Name, DATEDIFF(year, Birth_Date, GETDATE()) as Age
