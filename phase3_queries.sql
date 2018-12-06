@@ -1,5 +1,6 @@
+Use hospital;
 --1
-(SELECT Doctor_Type, Start_Date, Specialization FROM EMPLOYEE WHERE Doctor_Type="Trainee") UNION (SELECT Doctor_Type, Start_Date, Specialization FROM EMPLOYEE WHERE Doctor_Type="Visiting") UNION (SELECT Doctor_Type, Start_Date, Specialization FROM EMPLOYEE WHERE Doctor_Type="Permanent");
+(SELECT Doctor_Type, Start_Date, Specialization FROM EMPLOYEE WHERE Doctor_Type='Trainee') UNION (SELECT Doctor_Type, Start_Date, Specialization FROM EMPLOYEE WHERE Doctor_Type='Visiting') UNION (SELECT Doctor_Type, Start_Date, Specialization FROM EMPLOYEE WHERE Doctor_Type='Permanent');
 --WORKS
 
 --2
@@ -28,8 +29,6 @@ WHERE Doctor_Type in (
 	GROUP BY Doctor_Type
 	ORDER BY COUNT(Doctor_Type) DESC
 )
-
-
 
 --4
 SELECT M.Name FROM TopTreatment, TREATMENT, MEDICINE AS M, ASSIGNED WHERE TopTreatment.Name=Treatment.Name AND ASSIGNED.Medicine_Code=M.Medicine_Code AND ASSIGNED.Treatment_ID=TREATMENT.Treatment_ID;
@@ -85,7 +84,7 @@ ORDER BY Count(TREATMENT.Treatment_ID)
 --10
 SELECT COUNT(Admission_Date) 
 FROM CLASS2_PATIENT
-WHERE Admission_Date>(SELECT TOP 1 DATEDIFF(day, Start_Date, GETDATE()) FROM EMPLOYEE )
+WHERE DATEDIFF(day, Admission_Date, GETDATE())>(SELECT TOP 1 DATEDIFF(day, Start_Date, GETDATE()) FROM EMPLOYEE )
 GROUP BY CLASS2_PATIENT.Person_ID;
 --WORKS
 
