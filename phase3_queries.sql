@@ -1,6 +1,7 @@
 Use hospital;
 --1
 (SELECT Doctor_Type, Start_Date, Specialization FROM EMPLOYEE WHERE Doctor_Type='Trainee') UNION (SELECT Doctor_Type, Start_Date, Specialization FROM EMPLOYEE WHERE Doctor_Type='Visiting') UNION (SELECT Doctor_Type, Start_Date, Specialization FROM EMPLOYEE WHERE Doctor_Type='Permanent');
+
 --WORKS
 
 --2
@@ -138,7 +139,7 @@ WHERE Person_ID IN (
 	FROM PotentialPatient
 );
 
-
+GO
 
 
 
