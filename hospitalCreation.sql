@@ -155,36 +155,37 @@ CREATE TABLE RECORD
 --Person
 INSERT INTO PERSON(Person_ID, F_Name, M_Name, L_Name, Address, Gender, Birth_Date)
    VALUES
-   ('P100', 'Mungo', 'B', 'Jerry', '5454 XYZ Drive', 1, '1955-05-05'),
-   ('P101', 'Bobby', 'B', 'Smith', '123 Rocky Road', 1, '1978-02-16'),
-   ('P102', 'Julie', 'R', 'Johnson', '808 Lorrie Ave', 2, '1986-10-07'),
-   ('P103', 'Rick', 'E', 'Sanchez', '908 Milky Way', 1, '1943-04-20'),
-   ('P104', 'Nancy', 'M', 'Carney', '234 Viking Drive', 2, '1963-03-30'),
-   ('P105', 'Victoria', 'L', 'Rush', '221B Baker Street', 2, '1981-09-03'),
-   ('P106', 'George', NULL, 'James', '221B Penny Lane', 1, '1971-02-03'),
-   ('P107', 'Phil', NULL, 'Lays', '9200 Windy Lane', 1, '1996-04-24'),
-   ('P108', 'Charles', NULL, 'Ronson', '6200 Worthington Drive', 1, '2001-02-14'),
-   ('P109', 'Diana', NULL, 'Ross', '249 Syracuse Drive', 2, '1950-05-22'),
-   ('P110', 'Colonal', NULL, 'Mustard', '6226 Clue Lane', 1, '1937-12-23'),
-   ('P111', 'Bob', 'N', 'Ross', '1943 Happy Little Accidents Ave', 1, '1942-10-29'),
-   ('P112', 'Karl', NULL, 'Popper', '101 Metaphysics Drive', 1, '1902-10-28'),
-   ('P113', 'Bruce', NULL, 'Banner', '321 Oak Boulevard', 1, '1965-08-17'),
-   ('P114', 'Neil','D', 'Tyson', '200 Central Park West', 1, '1958-10-05'),
-   ('P115', 'Alan', NULL, 'Turing', '1101 Lambda Lane', 1, '1912-06-23'),
-   ('P116', 'Donald', NULL, 'Knuth', '1011 Combinatorics Way', 1, '1938-01-10'),
-   ('P117', 'Grace', NULL, 'Hopper', '1010 COBOL Parkway', 2, '1906-12-09'),
-   ('P118', 'Guido', 'V', 'Rossum', '1001 Benevolent Dictator For Life Blvd', 1, '1956-01-31'),
-   ('P119', 'Dennis', NULL, 'Ritchie', '1000 C-Side Blvd', 1, '1941-09-09'),
-   ('P120', 'Paul', NULL, 'Hudak', '1111 Functional Street', 1, '1952-07-15'),
-   ('P121', 'Rob', 'C', 'Pike', '1000 Go Lane', 1, '1956-07-03'),
-   ('P122', 'Robert', NULL, 'Griesemer', '1001 Go Lane', 1, '1950-04-01'),
-   ('P123', 'Ken', 'L', 'Thompson', '1010 Go Lane', 1, '1943-02-04'),
-   ('P124', 'Urban', NULL, 'Müller', '10101 Esoteric Lane', 1, '1971-01-25'),
-   ('P125', 'Haskell', NULL, 'Curry', '1011 Functional Street', 1, '1900-09-12'),
-   ('P126', 'John', NULL, 'McCarthy', '1101 Functional Street', 1, '1927-09-04'),
-   ('P127', 'Claude', 'E', 'Shannon', '11010 C23khsirfRiES Ave', 1, '1916-04-30'),
-   ('P128', 'Linus', 'B', 'Torvalds', '10000 Kernel Drive', 1, '1969-12-28'),
-   ('P129', 'Stephen', NULL, 'Wolfram', '10001 Automata Pkwy', 1, '1959-08-29');
+   ('P100', 'Mungo', 'B', 'Jerry', '5454 XYZ Drive', 1, '1955-05-05'), --doctor
+   ('P101', 'Bobby', 'B', 'Smith', '123 Rocky Road', 1, '1978-02-16'), --class 2 patient
+   ('P102', 'Julie', 'R', 'Johnson', '808 Lorrie Ave', 2, '1986-10-07'), --class 1 patient
+   ('P103', 'Rick', 'E', 'Sanchez', '908 Milky Way', 1, '1943-04-20'), --doctor
+   ('P104', 'Nancy', 'M', 'Carney', '234 Viking Drive', 2, '1963-03-30'), --nurse
+   ('P105', 'Victoria', 'L', 'Rush', '221B Baker Street', 2, '1981-09-03'), --receptionist
+   ('P106', 'George', NULL, 'James', '221B Penny Lane', 1, '1971-02-03'), --receptionist
+   ('P107', 'Phil', NULL, 'Lays', '9200 Windy Lane', 1, '1996-04-24'), --unused
+   ('P108', 'Charles', NULL, 'Ronson', '6200 Worthington Drive', 1, '2001-02-14'), --unused
+   ('P109', 'Diana', NULL, 'Ross', '249 Syracuse Drive', 2, '1950-05-22'), --unused
+   ('P110', 'Colonal', NULL, 'Mustard', '6226 Clue Lane', 1, '1937-12-23'), --class 2 patient
+   ('P111', 'Bob', 'N', 'Ross', '1943 Happy Little Accidents Ave', 1, '1942-10-29'), --class 2 patient
+   ('P112', 'Karl', NULL, 'Popper', '101 Metaphysics Drive', 1, '1902-10-28'), --class 1 patient
+   ('P113', 'Bruce', NULL, 'Banner', '321 Oak Boulevard', 1, '1965-08-17'), --unnused
+   ('P114', 'Neil','D', 'Tyson', '200 Central Park West', 1, '1958-10-05'), --class 1 patient
+   ('P115', 'Alan', NULL, 'Turing', '1101 Lambda Lane', 1, '1912-06-23'), --class 2 patient
+   ('P116', 'Donald', NULL, 'Knuth', '1011 Combinatorics Way', 1, '1938-01-10'), --unused
+   ('P117', 'Grace', NULL, 'Hopper', '1010 COBOL Parkway', 2, '1906-12-09'), --class 2 patient
+   ('P118', 'Guido', 'V', 'Rossum', '1001 Benevolent Dictator For Life Blvd', 1, '1956-01-31'), --unused
+   ('P119', 'Dennis', NULL, 'Ritchie', '1000 C-Side Blvd', 1, '1941-09-09'), --unused
+   ('P120', 'Paul', NULL, 'Hudak', '1111 Functional Street', 1, '1952-07-15'), --unused
+   ('P121', 'Rob', 'C', 'Pike', '1000 Go Lane', 1, '1956-07-03'), --class 1 patient
+   ('P122', 'Robert', NULL, 'Griesemer', '1001 Go Lane', 1, '1950-04-01'), --unused
+   ('P123', 'Ken', 'L', 'Thompson', '1010 Go Lane', 1, '1943-02-04'), --unused
+   ('P124', 'Urban', NULL, 'Müller', '10101 Esoteric Lane', 1, '1971-01-25'), --unused
+   ('P125', 'Haskell', NULL, 'Curry', '1011 Functional Street', 1, '1900-09-12'), --Intentionally Unused Doctor
+   ('P126', 'John', NULL, 'McCarthy', '1101 Functional Street', 1, '1927-09-04'), --unused
+   ('P127', 'Claude', 'E', 'Shannon', '11010 C23khsirfRiES Ave', 1, '1916-04-30'), --unused
+   ('P128', 'Linus', 'B', 'Torvalds', '10000 Kernel Drive', 1, '1969-12-28'), --class 2  patient
+   ('P129', 'Stephen', NULL, 'Wolfram', '10001 Automata Pkwy', 1, '1959-08-29'); --unused
+
    
 
 
@@ -193,6 +194,7 @@ INSERT INTO EMPLOYEE(Person_ID, Start_Date, Specialization, Doctor_Type)
    VALUES
    ('P100', '1998-08-12', 'Cardiology', 'Permanent'),
    ('P103', '2015-06-01', 'Orthopedic', 'Visiting'),
+   ('P125', '1975-05-04', 'Generalist', 'Permanent'),
    ('P104', '1987-01-31', 'Nurse', NULL),
    ('P105', '2007-10-31', 'Receptionist', NULL),
    ('P106', '2014-11-21', 'Receptionist', NULL);
@@ -202,7 +204,9 @@ INSERT INTO CLASS1_PATIENT(Person_ID, Doctor_ID)
 	VALUES
 	('P102', 'P100'),
 	('P100', 'P103'),
-	('P121', 'P100');
+	('P121', 'P100'),
+	('P112', 'P103'),
+	('P114', 'P103');
 
 --Room
 INSERT INTO ROOM(Room_ID, Room_Type, Nurse_ID)
@@ -280,6 +284,9 @@ INSERT INTO MEDICAL_BILL_PAYMENT(Payment_ID, Patient_ID, Receptionist_ID)
 	('66f218ea-d306-497e-b2a1-fbfd1a3e98e5', 'P101', 'P106'),
 	('f5cc3240-f034-487f-8420-eb91533565ab', 'P117', 'P106'),
 	('f69489f8-dfbe-4ff4-b63d-b446198066d6', 'P121', 'P105'),
+	('8fa72d4c-2614-4bd5-b2bc-a4b5fe55c1c7', 'P112', 'P106'),
+	('788d5594-9c99-4358-adbb-4139d2bc4c76', 'P114', 'P106'),
+	('4499f15f-ffb4-4aa3-a603-50ed5dbfa17d', 'P117', 'P106'),
 	('73c5c18f-c8d1-485d-aa9d-263f91e70215', 'P117', 'P106'),
 	('20ee8a07-94b4-47d9-8420-5333c98fd361', 'P111', 'P105'),
 	('2f1b746e-7dec-42fc-8632-6e9c1b185741', 'P111', 'P105'),
@@ -288,7 +295,6 @@ INSERT INTO MEDICAL_BILL_PAYMENT(Payment_ID, Patient_ID, Receptionist_ID)
 	('8d7dc9e4-8a14-4197-926d-ea8ab235b720', 'P121', 'P105'),
 	('ceee1ee1-f8aa-40f6-a18b-311b4592fe48', 'P121', 'P106'),
 	('1c131320-5652-43e7-9a64-97e25d9f1967', 'P121', 'P106');
-
 
 --Cash
 INSERT INTO CASH(Payment_ID, Amount)
@@ -313,6 +319,7 @@ INSERT INTO INSURANCE_PROVIDER(Insurance_ID, Provider)
 --Insurance
 INSERT INTO INSURANCE(Payment_ID, Insurance_ID, Amount, Coverage)
 	VALUES
+	('4499f15f-ffb4-4aa3-a603-50ed5dbfa17d', '2bfa19a9-c5ce-4815-865e-d4ee7e8ea63c', 1400, 6000),
 	('cb6f953d-cd1d-47fd-bbbf-c4e17ccee73b', 'acb32635-a23d-48e5-aae7-7d6dd77589da', 1400, 1400),
     ('d46ad8e7-9895-4cde-a9f5-606fab789e83', 'acb32635-a23d-48e5-aae7-7d6dd77589da', 5000, 3000),
 	('66f218ea-d306-497e-b2a1-fbfd1a3e98e5', 'acb32635-a23d-48e5-aae7-7d6dd77589da', 3000, 2200),
