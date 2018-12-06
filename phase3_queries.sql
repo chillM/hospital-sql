@@ -90,22 +90,15 @@ GROUP BY CLASS2_PATIENT.Person_ID;
 --WORKS
 
 
---11
-SELECT *
-FROM CLASS2_PATIENT,
-	ATTENDS,
-	(SELECT Visitor_ID, Person_ID, Name as V_Name, Address, Contact_Information, Room_ID
-		FROM VISITOR) as V,
-	(SELECT Medicine_Code, Name as M_Name, Price, Date_Of_Expiration, Quantity, Pharmacy_ID
-		FROM MEDICINE) as M,
-	(SELECT Name as T_Name, Duration
-		FROM TREATMENT) as T,
-	ASSIGNED,
-	PHONE_NUMBER,
-	RECORD
-WHERE ASSIGNED.Class2_Patient_ID=Patient_ID AND CLASS2_PATIENT.Person_ID=Patient_ID AND V.Person_ID=Patient_ID AND PHONE_NUMBER.Person_ID=Patient_ID AND Admission_Date BETWEEN Date_Of_Visit AND DATEADD(day, 7, Date_Of_Visit);
---WORKS
-
+--11 - Final (correct output)
+SELECT RECORD.*
+FROM RECORD
+WHERE Patient_ID IN (
+	SELECT CLASS2_PATIENT.Person_ID
+	FROM CLASS2_PATIENT, RECORD
+	WHERE Admission_Date BETWEEN Date_Of_Visit AND DATEADD(day, 7, Date_Of_Visit)
+		AND Person_ID = Patient_ID
+)
 
 
 --12 - Final (correct output)

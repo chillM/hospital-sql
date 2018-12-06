@@ -155,36 +155,36 @@ CREATE TABLE RECORD
 --Person
 INSERT INTO PERSON(Person_ID, F_Name, M_Name, L_Name, Address, Gender, Birth_Date)
    VALUES
-   ('P100', 'Mungo', 'B', 'Jerry', '5454 XYZ Drive', 1, '1955-05-05'), --doctor
-   ('P101', 'Bobby', 'B', 'Smith', '123 Rocky Road', 1, '1978-02-16'), --class 2 patient
-   ('P102', 'Julie', 'R', 'Johnson', '808 Lorrie Ave', 2, '1986-10-07'), --class 1 patient
-   ('P103', 'Rick', 'E', 'Sanchez', '908 Milky Way', 1, '1943-04-20'), --doctor
-   ('P104', 'Nancy', 'M', 'Carney', '234 Viking Drive', 2, '1963-03-30'), --nurse
-   ('P105', 'Victoria', 'L', 'Rush', '221B Baker Street', 2, '1981-09-03'), --receptionist
-   ('P106', 'George', NULL, 'James', '221B Penny Lane', 1, '1971-02-03'), --receptionist
-   ('P107', 'Phil', NULL, 'Lays', '9200 Windy Lane', 1, '1996-04-24'), --unused
-   ('P108', 'Charles', NULL, 'Ronson', '6200 Worthington Drive', 1, '2001-02-14'), --unused
-   ('P109', 'Diana', NULL, 'Ross', '249 Syracuse Drive', 2, '1950-05-22'), --unused
-   ('P110', 'Colonal', NULL, 'Mustard', '6226 Clue Lane', 1, '1937-12-23'), --class 2 patient
-   ('P111', 'Bob', 'N', 'Ross', '1943 Happy Little Accidents Ave', 1, '1942-10-29'), --class 2 patient
-   ('P112', 'Karl', NULL, 'Popper', '101 Metaphysics Drive', 1, '1902-10-28'), --unused
-   ('P113', 'Bruce', NULL, 'Banner', '321 Oak Boulevard', 1, '1965-08-17'), --unnused
-   ('P114', 'Neil','D', 'Tyson', '200 Central Park West', 1, '1958-10-05'), --unused
-   ('P115', 'Alan', NULL, 'Turing', '1101 Lambda Lane', 1, '1912-06-23'), --class 2 patient
-   ('P116', 'Donald', NULL, 'Knuth', '1011 Combinatorics Way', 1, '1938-01-10'), --unused
-   ('P117', 'Grace', NULL, 'Hopper', '1010 COBOL Parkway', 2, '1906-12-09'), --class 2 patient
-   ('P118', 'Guido', 'V', 'Rossum', '1001 Benevolent Dictator For Life Blvd', 1, '1956-01-31'), --unused
-   ('P119', 'Dennis', NULL, 'Ritchie', '1000 C-Side Blvd', 1, '1941-09-09'), --unused
-   ('P120', 'Paul', NULL, 'Hudak', '1111 Functional Street', 1, '1952-07-15'), --unused
-   ('P121', 'Rob', 'C', 'Pike', '1000 Go Lane', 1, '1956-07-03'), --class 1 patient
-   ('P122', 'Robert', NULL, 'Griesemer', '1001 Go Lane', 1, '1950-04-01'), --unused
-   ('P123', 'Ken', 'L', 'Thompson', '1010 Go Lane', 1, '1943-02-04'), --unused
-   ('P124', 'Urban', NULL, 'Müller', '10101 Esoteric Lane', 1, '1971-01-25'), --unused
-   ('P125', 'Haskell', NULL, 'Curry', '1011 Functional Street', 1, '1900-09-12'), --unused
-   ('P126', 'John', NULL, 'McCarthy', '1101 Functional Street', 1, '1927-09-04'), --unused
-   ('P127', 'Claude', 'E', 'Shannon', '11010 C23khsirfRiES Ave', 1, '1916-04-30'), --unused
-   ('P128', 'Linus', 'B', 'Torvalds', '10000 Kernel Drive', 1, '1969-12-28'), --class 2  patient
-   ('P129', 'Stephen', NULL, 'Wolfram', '10001 Automata Pkwy', 1, '1959-08-29'); --unused
+   ('P100', 'Mungo', 'B', 'Jerry', '5454 XYZ Drive', 1, '1955-05-05'),
+   ('P101', 'Bobby', 'B', 'Smith', '123 Rocky Road', 1, '1978-02-16'),
+   ('P102', 'Julie', 'R', 'Johnson', '808 Lorrie Ave', 2, '1986-10-07'),
+   ('P103', 'Rick', 'E', 'Sanchez', '908 Milky Way', 1, '1943-04-20'),
+   ('P104', 'Nancy', 'M', 'Carney', '234 Viking Drive', 2, '1963-03-30'),
+   ('P105', 'Victoria', 'L', 'Rush', '221B Baker Street', 2, '1981-09-03'),
+   ('P106', 'George', NULL, 'James', '221B Penny Lane', 1, '1971-02-03'),
+   ('P107', 'Phil', NULL, 'Lays', '9200 Windy Lane', 1, '1996-04-24'),
+   ('P108', 'Charles', NULL, 'Ronson', '6200 Worthington Drive', 1, '2001-02-14'),
+   ('P109', 'Diana', NULL, 'Ross', '249 Syracuse Drive', 2, '1950-05-22'),
+   ('P110', 'Colonal', NULL, 'Mustard', '6226 Clue Lane', 1, '1937-12-23'),
+   ('P111', 'Bob', 'N', 'Ross', '1943 Happy Little Accidents Ave', 1, '1942-10-29'),
+   ('P112', 'Karl', NULL, 'Popper', '101 Metaphysics Drive', 1, '1902-10-28'),
+   ('P113', 'Bruce', NULL, 'Banner', '321 Oak Boulevard', 1, '1965-08-17'),
+   ('P114', 'Neil','D', 'Tyson', '200 Central Park West', 1, '1958-10-05'),
+   ('P115', 'Alan', NULL, 'Turing', '1101 Lambda Lane', 1, '1912-06-23'),
+   ('P116', 'Donald', NULL, 'Knuth', '1011 Combinatorics Way', 1, '1938-01-10'),
+   ('P117', 'Grace', NULL, 'Hopper', '1010 COBOL Parkway', 2, '1906-12-09'),
+   ('P118', 'Guido', 'V', 'Rossum', '1001 Benevolent Dictator For Life Blvd', 1, '1956-01-31'),
+   ('P119', 'Dennis', NULL, 'Ritchie', '1000 C-Side Blvd', 1, '1941-09-09'),
+   ('P120', 'Paul', NULL, 'Hudak', '1111 Functional Street', 1, '1952-07-15'),
+   ('P121', 'Rob', 'C', 'Pike', '1000 Go Lane', 1, '1956-07-03'),
+   ('P122', 'Robert', NULL, 'Griesemer', '1001 Go Lane', 1, '1950-04-01'),
+   ('P123', 'Ken', 'L', 'Thompson', '1010 Go Lane', 1, '1943-02-04'),
+   ('P124', 'Urban', NULL, 'Müller', '10101 Esoteric Lane', 1, '1971-01-25'),
+   ('P125', 'Haskell', NULL, 'Curry', '1011 Functional Street', 1, '1900-09-12'),
+   ('P126', 'John', NULL, 'McCarthy', '1101 Functional Street', 1, '1927-09-04'),
+   ('P127', 'Claude', 'E', 'Shannon', '11010 C23khsirfRiES Ave', 1, '1916-04-30'),
+   ('P128', 'Linus', 'B', 'Torvalds', '10000 Kernel Drive', 1, '1969-12-28'),
+   ('P129', 'Stephen', NULL, 'Wolfram', '10001 Automata Pkwy', 1, '1959-08-29');
    
 
 
@@ -215,8 +215,8 @@ INSERT INTO ROOM(Room_ID, Room_Type, Nurse_ID)
 --Class 2 Patient
 INSERT INTO CLASS2_PATIENT(Person_ID, Admission_Date, Discharge_Date, Room_ID)
 	VALUES
-	('P101', '2018-11-01', NULL, 'e10d5923-ebbb-47a9-8fde-f9ba4ac229db'),
-	('P111', '2018-07-08', '20180714', '9044ad76-bd87-4bed-9605-d984cadf4658'),
+	('P101', '2017-11-01', '2018-01-03', 'e10d5923-ebbb-47a9-8fde-f9ba4ac229db'),
+	('P111', '2018-07-08', '2018-07-14', '9044ad76-bd87-4bed-9605-d984cadf4658'),
 	('P128', '2018-09-16', NULL, '979fb8b8-232d-49ed-84cd-e4b247ff09a6'),
 	('P115', '2018-11-10', NULL, '011a63ce-4d66-495e-b8b9-f33c854822b0'),
 	('P110', '2018-11-06', '2018-11-29', '011a63ce-4d66-495e-b8b9-f33c854822b0'),
@@ -276,6 +276,8 @@ INSERT INTO PHONE_NUMBER(Person_ID, Number)
 INSERT INTO MEDICAL_BILL_PAYMENT(Payment_ID, Patient_ID, Receptionist_ID)
 	VALUES
 	('d46ad8e7-9895-4cde-a9f5-606fab789e83', 'P100', 'P105'),
+	('cb6f953d-cd1d-47fd-bbbf-c4e17ccee73b', 'P101', 'P105'),
+	('66f218ea-d306-497e-b2a1-fbfd1a3e98e5', 'P101', 'P106'),
 	('f5cc3240-f034-487f-8420-eb91533565ab', 'P117', 'P106'),
 	('f69489f8-dfbe-4ff4-b63d-b446198066d6', 'P121', 'P105'),
 	('73c5c18f-c8d1-485d-aa9d-263f91e70215', 'P117', 'P106'),
@@ -292,6 +294,7 @@ INSERT INTO MEDICAL_BILL_PAYMENT(Payment_ID, Patient_ID, Receptionist_ID)
 INSERT INTO CASH(Payment_ID, Amount)
 	VALUES
     ('d46ad8e7-9895-4cde-a9f5-606fab789e83', 2000),
+	('66f218ea-d306-497e-b2a1-fbfd1a3e98e5', 800),
 	('f69489f8-dfbe-4ff4-b63d-b446198066d6', 1200),
 	('e0aef839-8d12-412f-8edf-0d88b000dea6', 500),
 	('8d7dc9e4-8a14-4197-926d-ea8ab235b720', 1000),
@@ -310,7 +313,9 @@ INSERT INTO INSURANCE_PROVIDER(Insurance_ID, Provider)
 --Insurance
 INSERT INTO INSURANCE(Payment_ID, Insurance_ID, Amount, Coverage)
 	VALUES
+	('cb6f953d-cd1d-47fd-bbbf-c4e17ccee73b', 'acb32635-a23d-48e5-aae7-7d6dd77589da', 1400, 1400),
     ('d46ad8e7-9895-4cde-a9f5-606fab789e83', 'acb32635-a23d-48e5-aae7-7d6dd77589da', 5000, 3000),
+	('66f218ea-d306-497e-b2a1-fbfd1a3e98e5', 'acb32635-a23d-48e5-aae7-7d6dd77589da', 3000, 2200),
 	('f5cc3240-f034-487f-8420-eb91533565ab', '2bfa19a9-c5ce-4815-865e-d4ee7e8ea63c', 1400, 6000),
 	('73c5c18f-c8d1-485d-aa9d-263f91e70215', 'acb32635-a23d-48e5-aae7-7d6dd77589da', 4000, 4000),
 	('20ee8a07-94b4-47d9-8420-5333c98fd361', 'acb32635-a23d-48e5-aae7-7d6dd77589da', 800, 500),
@@ -323,7 +328,9 @@ INSERT INTO INSURANCE(Payment_ID, Insurance_ID, Amount, Coverage)
 --Record
 INSERT INTO RECORD(Record_ID, Patient_ID, Date_Of_Visit, Description, Payment_ID, Receptionist_ID)
 	VALUES
-	('80fb52bb-6999-44cc-9489-dd13782a69a9', 'P100', '2017-06-10', 'Feeling ill', 'd46ad8e7-9895-4cde-a9f5-606fab789e83', 'P105'),
+	('80fb52bb-6999-44cc-9489-dd13782a69a9', 'P100', '2017-06-10', 'Long description here', 'd46ad8e7-9895-4cde-a9f5-606fab789e83', 'P105'),
+	('90ca4438-c9cc-4518-b776-8305e78b32a8', 'P101', '2017-06-15', 'Fever and vomiting', 'cb6f953d-cd1d-47fd-bbbf-c4e17ccee73b', 'P105'),
+	('67ee1c5e-e0da-461d-917d-f47def165b04', 'P101', '2017-10-28', 'Sudden pain in lower abdomon', '66f218ea-d306-497e-b2a1-fbfd1a3e98e5', 'P106'),
 	('5434c983-90b0-4d88-93ae-f4f648fb9a86', 'P117', '2017-11-10', 'Feeling ill', 'f5cc3240-f034-487f-8420-eb91533565ab', 'P106'),
 	('f3d0ff3f-3e9f-483b-bc13-a75a5810794a', 'P117', '2017-11-25', 'Dizzy spell at work', '73c5c18f-c8d1-485d-aa9d-263f91e70215', 'P106'),
 	('9e7b9b93-ce2f-488b-bf5d-03cb410003ae', 'P111', '2017-07-08', 'First Visit', '20ee8a07-94b4-47d9-8420-5333c98fd361', 'P105'),
