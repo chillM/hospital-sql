@@ -97,7 +97,7 @@ ORDER BY Count(TREATMENT.Treatment_ID)
 
 
 --10
-SELECT COUNT(Admission_Date) 
+SELECT COUNT(Admission_Date) as Num_Patients
 FROM CLASS2_PATIENT
 WHERE DATEDIFF(day, Admission_Date, GETDATE()) < (SELECT TOP 1 DATEDIFF(day, Start_Date, GETDATE()) FROM EMPLOYEE ORDER BY DATEDIFF(day, Start_Date, GETDATE()) DESC);
 --WORKS

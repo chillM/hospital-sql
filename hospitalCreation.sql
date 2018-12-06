@@ -224,7 +224,7 @@ INSERT INTO CLASS2_PATIENT(Person_ID, Admission_Date, Discharge_Date, Room_ID)
 	('P128', '2018-09-16', NULL, '979fb8b8-232d-49ed-84cd-e4b247ff09a6'),
 	('P115', '2018-11-10', NULL, '011a63ce-4d66-495e-b8b9-f33c854822b0'),
 	('P110', '2018-11-06', '2018-11-29', '011a63ce-4d66-495e-b8b9-f33c854822b0'),
-	('P117', '2018-11-10', NULL, '011a63ce-4d66-495e-b8b9-f33c854822b0');
+	('P117', '2011-11-10', NULL, '011a63ce-4d66-495e-b8b9-f33c854822b0');
 
 --Attends
 INSERT INTO ATTENDS(Doctor_ID, Class2_Patient_ID)
