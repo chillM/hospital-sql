@@ -261,7 +261,7 @@ INSERT INTO TREATMENT(Treatment_ID, Name, Duration)
 INSERT INTO ASSIGNED(Class2_Patient_ID, Medicine_Code, Treatment_ID)
 	VALUES
 	('P101', 'c1e37f61-455f-4b51-a43a-ea1d20619a1f', '86f9d393-ae87-4247-9cd3-40d1197b2f51'),
-	('P111', 'c1e37f61-455f-4b51-a43a-ea1d20619a1f', '86f9d393-ae87-4247-9cd3-40d1197b2f51'),
+	('P111', 'c1e37f61-455f-4b51-a43a-ea1d20619a1f', '09610573-ec8b-40a6-8698-f40479b040dc'),
 	('P128', 'f703936a-f725-4ba8-a031-8af9a6b30e05', '09610573-ec8b-40a6-8698-f40479b040dc');
 
 --Phone Number
@@ -328,7 +328,7 @@ INSERT INTO INSURANCE(Payment_ID, Insurance_ID, Amount, Coverage)
 --Record
 INSERT INTO RECORD(Record_ID, Patient_ID, Date_Of_Visit, Description, Payment_ID, Receptionist_ID)
 	VALUES
-	('80fb52bb-6999-44cc-9489-dd13782a69a9', 'P100', '2017-06-10', 'Long description here', 'd46ad8e7-9895-4cde-a9f5-606fab789e83', 'P105'),
+	('80fb52bb-6999-44cc-9489-dd13782a69a9', 'P100', '2017-06-10', 'Feeling ill', 'd46ad8e7-9895-4cde-a9f5-606fab789e83', 'P105'),
 	('90ca4438-c9cc-4518-b776-8305e78b32a8', 'P101', '2017-06-15', 'Fever and vomiting', 'cb6f953d-cd1d-47fd-bbbf-c4e17ccee73b', 'P105'),
 	('67ee1c5e-e0da-461d-917d-f47def165b04', 'P101', '2017-10-28', 'Sudden pain in lower abdomon', '66f218ea-d306-497e-b2a1-fbfd1a3e98e5', 'P106'),
 	('5434c983-90b0-4d88-93ae-f4f648fb9a86', 'P117', '2017-11-10', 'Feeling ill', 'f5cc3240-f034-487f-8420-eb91533565ab', 'P106'),

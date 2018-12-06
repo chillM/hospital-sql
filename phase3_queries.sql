@@ -63,11 +63,11 @@ FROM (
 --WORKS
 
 --8
-SELECT TOP(1) DATEPART(year, Date_Of_Visit) AS year, Description
+SELECT TOP(1) year, Description, Cnt
 FROM (
-	SELECT Date_Of_Visit, Description, COUNT(*) as Cnt
+	SELECT DATEPART(year, Date_Of_Visit) as year, Description, COUNT(*) as Cnt
 	FROM RECORD
-	GROUP BY Date_Of_Visit, Description
+	GROUP BY DATEPART(year, Date_Of_Visit), Description
 ) as Tmp
 ORDER BY Cnt DESC
 --WORKS
