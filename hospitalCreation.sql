@@ -323,7 +323,7 @@ INSERT INTO INSURANCE(Payment_ID, Insurance_ID, Amount, Coverage)
 --Record
 INSERT INTO RECORD(Record_ID, Patient_ID, Date_Of_Visit, Description, Payment_ID, Receptionist_ID)
 	VALUES
-	('80fb52bb-6999-44cc-9489-dd13782a69a9', 'P100', '2017-06-10', 'Long description here', 'd46ad8e7-9895-4cde-a9f5-606fab789e83', 'P105'),
+	('80fb52bb-6999-44cc-9489-dd13782a69a9', 'P100', '2017-06-10', 'Feeling ill', 'd46ad8e7-9895-4cde-a9f5-606fab789e83', 'P105'),
 	('5434c983-90b0-4d88-93ae-f4f648fb9a86', 'P117', '2017-11-10', 'Feeling ill', 'f5cc3240-f034-487f-8420-eb91533565ab', 'P106'),
 	('f3d0ff3f-3e9f-483b-bc13-a75a5810794a', 'P117', '2017-11-25', 'Dizzy spell at work', '73c5c18f-c8d1-485d-aa9d-263f91e70215', 'P106'),
 	('9e7b9b93-ce2f-488b-bf5d-03cb410003ae', 'P111', '2017-07-08', 'First Visit', '20ee8a07-94b4-47d9-8420-5333c98fd361', 'P105'),
