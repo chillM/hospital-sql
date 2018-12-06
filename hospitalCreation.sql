@@ -202,7 +202,12 @@ INSERT INTO CLASS1_PATIENT(Person_ID, Doctor_ID)
 	VALUES
 	('P102', 'P100'),
 	('P100', 'P103'),
-	('P121', 'P100');
+	('P121', 'P100'),
+	('P122', 'P103'),
+	('P123', 'P103'),
+	('P124', 'P103'),
+	('P125', 'P103'),
+	('P126', 'P103');
 
 --Room
 INSERT INTO ROOM(Room_ID, Room_Type, Nurse_ID)
@@ -210,6 +215,8 @@ INSERT INTO ROOM(Room_ID, Room_Type, Nurse_ID)
 	('e10d5923-ebbb-47a9-8fde-f9ba4ac229db', 'Single', 'P104'),
 	('9044ad76-bd87-4bed-9605-d984cadf4658', 'Double', 'P104'),
 	('979fb8b8-232d-49ed-84cd-e4b247ff09a6', 'Quadruple', 'P104'),
+	('b51d0669-73c0-48f1-9f4c-32471a5dd7ee', 'Quadruple', 'P104'),
+	('a812fcb9-00b9-4f10-96c3-25a6d6cf2741', 'Quadruple', 'P104'),
 	('011a63ce-4d66-495e-b8b9-f33c854822b0', 'Multiple', 'P104');
 
 --Class 2 Patient
@@ -220,17 +227,31 @@ INSERT INTO CLASS2_PATIENT(Person_ID, Admission_Date, Discharge_Date, Room_ID)
 	('P128', '2018-09-16', NULL, '979fb8b8-232d-49ed-84cd-e4b247ff09a6'),
 	('P115', '2018-11-10', NULL, '011a63ce-4d66-495e-b8b9-f33c854822b0'),
 	('P110', '2018-11-06', '2018-11-29', '011a63ce-4d66-495e-b8b9-f33c854822b0'),
-	('P117', '2018-11-10', NULL, '011a63ce-4d66-495e-b8b9-f33c854822b0');
+	('P116', '2018-11-09', NULL, 'a812fcb9-00b9-4f10-96c3-25a6d6cf2741'),
+	('P117', '2018-11-10', NULL, '011a63ce-4d66-495e-b8b9-f33c854822b0'),
+	('P118', '2018-11-11', NULL, 'b51d0669-73c0-48f1-9f4c-32471a5dd7ee'),
+	('P119', '2018-11-12', NULL, 'b51d0669-73c0-48f1-9f4c-32471a5dd7ee'),
+	('P120', '2018-11-13', NULL, 'b51d0669-73c0-48f1-9f4c-32471a5dd7ee'),
+	('P129', '2018-11-14', NULL, 'b51d0669-73c0-48f1-9f4c-32471a5dd7ee');
+
 
 --Attends
 INSERT INTO ATTENDS(Doctor_ID, Class2_Patient_ID)
 	VALUES
 	('P103', 'P101'),
 	('P100', 'P111'),
+	('P103', 'P111'),
 	('P103', 'P128'),
 	('P103', 'P115'),
 	('P100', 'P110'),
-	('P100', 'P117');
+	('P103', 'P110'),
+	('P103', 'P116'),
+	('P100', 'P117'),
+	('P103', 'P117'),
+	('P103', 'P118'),
+	('P103', 'P119'),
+	('P103', 'P120'),
+	('P103', 'P129');
 
 
 --Visitor
