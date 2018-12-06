@@ -271,15 +271,22 @@ INSERT INTO ASSIGNED(Class2_Patient_ID, Medicine_Code, Treatment_ID)
 INSERT INTO PHONE_NUMBER(Person_ID, Number)
 	VALUES
     ('P101', '972-867-5309'),
-	('P102', '555-555-5555')
+	('P102', '555-555-5555'),
+	('P121', '800-555-3311');
 
 --Record
 INSERT INTO RECORD(Record_ID, Patient_ID, Date_Of_Visit, Description, Appointment, Receptionist_ID)
 	VALUES
 	('80fb52bb-6999-44cc-9489-dd13782a69a9', 'P100', '2018-06-10', 'Long description here', 'd46ad8e7-9895-4cde-a9f5-606fab789e83', 'P105'),
-	('223442a3-9fb2-49e0-9d7c-1e7a26144b54', 'P121', '2016-03-18', 'Long description here', '368b8003-ef87-4285-9b5f-b7555d5d8785', 'P105'),
-	('9e7b9b93-ce2f-488b-bf5d-03cb410003ae', 'P111', '2018-07-08', 'Professional description here', '20ee8a07-94b4-47d9-8420-5333c98fd361', 'P105'),
-	('5434c983-90b0-4d88-93ae-f4f648fb9a86', 'P117', '2018-11-10', 'Professional description here', 'f5cc3240-f034-487f-8420-eb91533565ab', 'P106');
+	('5434c983-90b0-4d88-93ae-f4f648fb9a86', 'P117', '2018-11-10', 'Professional description here', 'f5cc3240-f034-487f-8420-eb91533565ab', 'P106'),
+	('9e7b9b93-ce2f-488b-bf5d-03cb410003ae', 'P111', '2018-07-08', 'First Visit', '20ee8a07-94b4-47d9-8420-5333c98fd361', 'P105'),
+	('2c46cd58-941a-4a84-a20e-5b2b41dac8e4', 'P111', '2018-07-08', 'Second Visit', '2f1b746e-7dec-42fc-8632-6e9c1b185741', 'P105'),
+	('0e2e0d47-972d-42e4-b675-f229e6edf675', 'P111', '2018-07-08', 'Third Visit', 'f67d418f-cf43-410c-ae36-3cdcefafcb1d', 'P106'),
+	('a6628231-cff3-4c77-bf30-03dcba34fc4c', 'P111', '2018-07-08', 'Admitted as Class 2', 'e0aef839-8d12-412f-8edf-0d88b000dea6', 'P105'),
+	('223442a3-9fb2-49e0-9d7c-1e7a26144b54', 'P121', '2016-03-18', 'First Visit', '368b8003-ef87-4285-9b5f-b7555d5d8785', 'P105'),
+	('3c52e920-c96a-4ea9-888b-2a27855c155d', 'P121', '2018-08-09', 'Second Visit', '8d7dc9e4-8a14-4197-926d-ea8ab235b720', 'P105'),
+	('075c5b02-ea32-4db3-adf2-68f7fc8eb4e6', 'P121', '2018-09-10', 'Third Visit', 'ceee1ee1-f8aa-40f6-a18b-311b4592fe48', 'P106'),
+	('54b9c43a-fa1e-4b63-bc95-1fca426f32cd', 'P121', '2018-09-10', 'Fourth Visit', '1c131320-5652-43e7-9a64-97e25d9f1967', 'P106');
 
 --Medical Bill Payment
 INSERT INTO MEDICAL_BILL_PAYMENT(Payment_ID, Patient_ID, Receptionist_ID)
@@ -308,4 +315,3 @@ INSERT INTO INSURANCE(Payment_ID, Insurance_ID, Amount, Coverage)
 
 
 GO
-

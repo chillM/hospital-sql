@@ -131,14 +131,13 @@ WHERE Person_ID IN (
 );
 --WORKS
 
---14
+--14 - Final (correct output)
 SELECT F_Name, M_Name, L_Name, DATEDIFF(year, Birth_Date, GETDATE()) as Age
 FROM PERSON per
 WHERE Person_ID IN (
 	SELECT Person_ID
 	FROM PotentialPatient
 );
---WORKS
 
 
 
