@@ -1,12 +1,12 @@
 Use hospital;
 
 --1
-(SELECT Doctor_Type, Start_Date, Specialization FROM EMPLOYEE WHERE Doctor_Type='Trainee') UNION (SELECT Doctor_Type, Start_Date, Specialization FROM EMPLOYEE WHERE Doctor_Type='Visiting') UNION (SELECT Doctor_Type, Start_Date, Specialization FROM EMPLOYEE WHERE Doctor_Type='Permanent');
+SELECT Doctor_Type, Start_Date, Specialization FROM EMPLOYEE WHERE Doctor_Type IS NOT NULL GROUP BY Doctor_Type, Start_Date, Specialization;
 
 --WORKS
 
 --2
-SELECT F_Name, M_Name, L_Name FROM PERSON, EMPLOYEE, CLASS2_PATIENT WHERE PERSON.Person_ID=EMPLOYEE.Person_ID AND PERSON.Person_ID=CLASS2_PATIENT.Person_ID AND Admission_Date BETWEEN Start_Date AND (SELECT DATEADD(month, 3, Start_Date));
+SELECT F_Name, M_Name, L_Name FROM PERSON, EMPLOYEE, CLASS2_PATIENT WHERE PERSON.Person_ID=EMPLOYEE.Person_ID AND EMPLOYEE.Person_ID=CLASS2_PATIENT.Person_ID AND DATEDIFF(month, EMPLOYEE.Start_Date, CLASS2_PATIENT.Admission_Date) < 3;
 --WORKS
 
 
@@ -38,7 +38,7 @@ WHERE Doctor_Type in (
 )
 
 --4
-SELECT M.Name FROM TopTreatment, TREATMENT, MEDICINE AS M, ASSIGNED WHERE TopTreatment.Name=Treatment.Name AND ASSIGNED.Medicine_Code=M.Medicine_Code AND ASSIGNED.Treatment_ID=TREATMENT.Treatment_ID;
+SELECT MEDICINE.Name FROM TopTreatment, TREATMENT, MEDICINE, ASSIGNED WHERE TopTreatment.Name=TREATMENT.Name AND ASSIGNED.Medicine_Code=MEDICINE.Medicine_Code AND ASSIGNED.Treatment_ID=TREATMENT.Treatment_ID;
 --WORKS
 
 --5
