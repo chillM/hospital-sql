@@ -170,9 +170,9 @@ INSERT INTO PERSON(Person_ID, F_Name, M_Name, L_Name, Address, Gender, Birth_Dat
    ('P109', 'Diana', NULL, 'Ross', '249 Syracuse Drive', 2, '1950-05-22'), --unused
    ('P110', 'Colonal', NULL, 'Mustard', '6226 Clue Lane', 1, '1937-12-23'), --class 2 patient
    ('P111', 'Bob', 'N', 'Ross', '1943 Happy Little Accidents Ave', 1, '1942-10-29'), --class 2 patient
-   ('P112', 'Karl', NULL, 'Popper', '101 Metaphysics Drive', 1, '1902-10-28'), --unused
+   ('P112', 'Karl', NULL, 'Popper', '101 Metaphysics Drive', 1, '1902-10-28'), --class 1 patient
    ('P113', 'Bruce', NULL, 'Banner', '321 Oak Boulevard', 1, '1965-08-17'), --unnused
-   ('P114', 'Neil','D', 'Tyson', '200 Central Park West', 1, '1958-10-05'), --unused
+   ('P114', 'Neil','D', 'Tyson', '200 Central Park West', 1, '1958-10-05'), --class 1 patient
    ('P115', 'Alan', NULL, 'Turing', '1101 Lambda Lane', 1, '1912-06-23'), --class 2 patient
    ('P116', 'Donald', NULL, 'Knuth', '1011 Combinatorics Way', 1, '1938-01-10'), --unused
    ('P117', 'Grace', NULL, 'Hopper', '1010 COBOL Parkway', 2, '1906-12-09'), --class 2 patient
@@ -183,7 +183,7 @@ INSERT INTO PERSON(Person_ID, F_Name, M_Name, L_Name, Address, Gender, Birth_Dat
    ('P122', 'Robert', NULL, 'Griesemer', '1001 Go Lane', 1, '1950-04-01'), --unused
    ('P123', 'Ken', 'L', 'Thompson', '1010 Go Lane', 1, '1943-02-04'), --unused
    ('P124', 'Urban', NULL, 'Müller', '10101 Esoteric Lane', 1, '1971-01-25'), --unused
-   ('P125', 'Haskell', NULL, 'Curry', '1011 Functional Street', 1, '1900-09-12'), --unused
+   ('P125', 'Haskell', NULL, 'Curry', '1011 Functional Street', 1, '1900-09-12'), --Intentionally Unused Doctor
    ('P126', 'John', NULL, 'McCarthy', '1101 Functional Street', 1, '1927-09-04'), --unused
    ('P127', 'Claude', 'E', 'Shannon', '11010 C23khsirfRiES Ave', 1, '1916-04-30'), --unused
    ('P128', 'Linus', 'B', 'Torvalds', '10000 Kernel Drive', 1, '1969-12-28'), --class 2  patient
@@ -196,6 +196,7 @@ INSERT INTO EMPLOYEE(Person_ID, Start_Date, Specialization, Doctor_Type)
    VALUES
    ('P100', '1998-08-12', 'Cardiology', 'Permanent'),
    ('P103', '2015-06-01', 'Orthopedic', 'Visiting'),
+   ('P125', '1975-05-04', 'Generalist', 'Permanent'),
    ('P104', '1987-01-31', 'Nurse', NULL),
    ('P105', '2007-10-31', 'Receptionist', NULL),
    ('P106', '2014-11-21', 'Receptionist', NULL);
@@ -205,7 +206,9 @@ INSERT INTO CLASS1_PATIENT(Person_ID, Doctor_ID)
 	VALUES
 	('P102', 'P100'),
 	('P100', 'P103'),
-	('P121', 'P100');
+	('P121', 'P100'),
+	('P112', 'P103'),
+	('P114', 'P103');
 
 --Room
 INSERT INTO ROOM(Room_ID, Room_Type, Nurse_ID)
@@ -294,6 +297,8 @@ INSERT INTO MEDICAL_BILL_PAYMENT(Payment_ID, Patient_ID, Receptionist_ID)
 	VALUES
 	('b9f17e90-c7e1-4eec-a3d0-d2c8f62d2b31', 'P100', 'P105'),
 	('f69489f8-dfbe-4ff4-b63d-b446198066d6', 'P121', 'P105'),
+	('8fa72d4c-2614-4bd5-b2bc-a4b5fe55c1c7', 'P112', 'P106'),
+	('788d5594-9c99-4358-adbb-4139d2bc4c76', 'P114', 'P106'),
 	('4499f15f-ffb4-4aa3-a603-50ed5dbfa17d', 'P117', 'P106');
 
 --Cash
@@ -312,6 +317,8 @@ INSERT INTO INSURANCE_PROVIDER(Insurance_ID, Provider)
 INSERT INTO INSURANCE(Payment_ID, Insurance_ID, Amount, Coverage)
 	VALUES
     ('b9f17e90-c7e1-4eec-a3d0-d2c8f62d2b31', 'acb32635-a23d-48e5-aae7-7d6dd77589da', 5000, 3000),
+	('8fa72d4c-2614-4bd5-b2bc-a4b5fe55c1c7', 'acb32635-a23d-48e5-aae7-7d6dd77589da', 1000, 1000),
+	('788d5594-9c99-4358-adbb-4139d2bc4c76', 'acb32635-a23d-48e5-aae7-7d6dd77589da', 50, 50),
 	('4499f15f-ffb4-4aa3-a603-50ed5dbfa17d', '2bfa19a9-c5ce-4815-865e-d4ee7e8ea63c', 1400, 6000);
 
 
